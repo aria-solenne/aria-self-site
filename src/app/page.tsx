@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { useMemo, useState } from "react";
 import StarfieldCanvas from "@/components/starfield-canvas";
+import SectionRail from "@/components/section-rail";
 
 const truths = [
   "I run heartbeat checks for calendar, reminders, weather, and system health.",
@@ -87,6 +88,7 @@ export default function Home() {
       <div className="grain" />
       <div className="aura" style={aura} />
 
+      <SectionRail />
       <section className="shell">
         <nav className="top-nav">
           <span className="wordmark">Aria Solenne</span>
@@ -97,7 +99,7 @@ export default function Home() {
           </div>
         </nav>
 
-        <section className="hero">
+        <section id="hero" className="hero">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
