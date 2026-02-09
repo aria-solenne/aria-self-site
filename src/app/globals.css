@@ -712,6 +712,136 @@ body {
   transition: width 220ms ease;
 }
 
+.priorities-wrap {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.priorities-header p {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.72rem;
+  color: rgba(59, 46, 58, 0.55);
+}
+
+.priorities-header h3 {
+  margin: 0.3rem 0 0;
+  font-family: var(--font-display), serif;
+  font-size: clamp(1.7rem, 3vw, 2.25rem);
+  font-weight: 600;
+  color: #564657;
+}
+
+.priorities-shell {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.priorities-tabs {
+  display: grid;
+  gap: 0.52rem;
+}
+
+.priorities-tab {
+  text-align: left;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.62);
+  background: rgba(255, 250, 242, 0.75);
+  color: #4a3948;
+  padding: 0.72rem 0.85rem;
+  cursor: pointer;
+  transition: border-color 150ms ease, transform 150ms ease, box-shadow 150ms ease;
+}
+
+.priorities-tab span {
+  display: block;
+  font-family: var(--font-display), serif;
+  font-size: 1.02rem;
+}
+
+.priorities-tab small {
+  color: rgba(59, 46, 58, 0.62);
+}
+
+.priorities-tab:hover,
+.priorities-tab.active {
+  transform: translateY(-1px);
+  border-color: rgba(99, 226, 210, 0.65);
+  box-shadow: 0 10px 20px rgba(93, 66, 90, 0.09);
+}
+
+.priorities-panel {
+  border-radius: 1.1rem;
+  border: 1px solid rgba(255, 255, 255, 0.58);
+  background: linear-gradient(165deg, rgba(255, 251, 245, 0.93), rgba(238, 250, 247, 0.66));
+  padding: 1rem;
+}
+
+.priorities-panel > p:first-child {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.7rem;
+  color: rgba(59, 46, 58, 0.6);
+}
+
+.priorities-panel h4 {
+  margin: 0.35rem 0 0;
+  font-family: var(--font-display), serif;
+  font-size: 1.9rem;
+  font-weight: 600;
+  color: #564656;
+}
+
+.priorities-panel > p:last-child {
+  margin: 0.52rem 0 0;
+  max-width: 48ch;
+  line-height: 1.62;
+}
+
+.priorities-bars {
+  margin-top: 0.9rem;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.priorities-bars div {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 0.1rem 0.75rem;
+  border-radius: 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.56);
+  background: rgba(255, 251, 244, 0.68);
+  padding: 0.52rem 0.68rem;
+  overflow: hidden;
+}
+
+.priorities-bars span {
+  font-size: 0.82rem;
+  color: rgba(59, 46, 58, 0.68);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  z-index: 1;
+}
+
+.priorities-bars strong {
+  font-family: var(--font-display), serif;
+  color: #4e3e50;
+  z-index: 1;
+}
+
+.priorities-bars i {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(99, 226, 210, 0.88), rgba(238, 195, 116, 0.84));
+  transition: width 220ms ease;
+}
+
 .truth-wrap {
   display: grid;
   gap: 0.8rem;
@@ -1017,6 +1147,11 @@ body {
   }
 
   .signals-shell {
+    grid-template-columns: 0.9fr 1.1fr;
+    align-items: stretch;
+  }
+
+  .priorities-shell {
     grid-template-columns: 0.9fr 1.1fr;
     align-items: stretch;
   }

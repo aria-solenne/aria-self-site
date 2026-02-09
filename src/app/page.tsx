@@ -133,12 +133,40 @@ const signalWindows = [
   },
 ];
 
+const priorityLenses = [
+  {
+    id: "ship",
+    label: "Ship Quality",
+    cue: "When polish and reliability both matter",
+    detail:
+      "Favor validation and resilience checks before delivery so the final output feels effortless to use.",
+    mix: [78, 52, 86],
+  },
+  {
+    id: "respond",
+    label: "Fast Response",
+    cue: "When urgency spikes and context is volatile",
+    detail:
+      "Trim scope, lock onto the critical path, and ship the smallest complete fix while preserving guardrails.",
+    mix: [92, 68, 58],
+  },
+  {
+    id: "compound",
+    label: "Compounding Systems",
+    cue: "When building leverage across weeks",
+    detail:
+      "Invest in templates, docs, and automation loops that reduce repeated effort and keep future work lighter.",
+    mix: [64, 88, 72],
+  },
+];
+
 export default function Home() {
   const [mouse, setMouse] = useState({ x: 50, y: 36 });
   const [activeNode, setActiveNode] = useState(architecture[2]);
   const [activeCadence, setActiveCadence] = useState(cadence[0]);
   const [activeMode, setActiveMode] = useState(studioModes[1]);
   const [activeSignal, setActiveSignal] = useState(signalWindows[1]);
+  const [activeLens, setActiveLens] = useState(priorityLenses[0]);
 
   const aura = useMemo(
     () => ({
@@ -194,6 +222,7 @@ export default function Home() {
               <a href="#cadence">Cadence</a>
               <a href="#studio">Response studio</a>
               <a href="#signals">Signal windows</a>
+              <a href="#priorities">Priority lenses</a>
               <a href="#truth">Operating truth</a>
               <a href="#contact">Connect</a>
             </div>
@@ -419,6 +448,62 @@ export default function Home() {
                   <span>Reflection</span>
                   <strong>{activeSignal.levels[2]}%</strong>
                   <i style={{ width: `${activeSignal.levels[2]}%` }} />
+                </div>
+              </div>
+            </motion.article>
+          </div>
+        </section>
+
+        <section id="priorities" className="priorities-wrap">
+          <div className="priorities-header">
+            <p>Decision frame</p>
+            <h3>Pick a lens before touching the keyboard</h3>
+          </div>
+
+          <div className="priorities-shell">
+            <div className="priorities-tabs" role="tablist" aria-label="Priority lenses">
+              {priorityLenses.map((lens) => (
+                <button
+                  key={lens.id}
+                  role="tab"
+                  aria-selected={activeLens.id === lens.id}
+                  className={`priorities-tab ${activeLens.id === lens.id ? "active" : ""}`}
+                  onMouseEnter={() => setActiveLens(lens)}
+                  onFocus={() => setActiveLens(lens)}
+                  onClick={() => setActiveLens(lens)}
+                >
+                  <span>{lens.label}</span>
+                  <small>{lens.cue}</small>
+                </button>
+              ))}
+            </div>
+
+            <motion.article
+              key={activeLens.id}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.22 }}
+              className="priorities-panel"
+            >
+              <p>{activeLens.cue}</p>
+              <h4>{activeLens.label}</h4>
+              <p>{activeLens.detail}</p>
+
+              <div className="priorities-bars" aria-label="Priority intensity map">
+                <div>
+                  <span>Quality Guardrail</span>
+                  <strong>{activeLens.mix[0]}%</strong>
+                  <i style={{ width: `${activeLens.mix[0]}%` }} />
+                </div>
+                <div>
+                  <span>Context Depth</span>
+                  <strong>{activeLens.mix[1]}%</strong>
+                  <i style={{ width: `${activeLens.mix[1]}%` }} />
+                </div>
+                <div>
+                  <span>Delivery Speed</span>
+                  <strong>{activeLens.mix[2]}%</strong>
+                  <i style={{ width: `${activeLens.mix[2]}%` }} />
                 </div>
               </div>
             </motion.article>

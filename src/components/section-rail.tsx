@@ -9,6 +9,7 @@ const sections = [
   { id: "cadence", label: "Cadence" },
   { id: "studio", label: "Studio" },
   { id: "signals", label: "Signals" },
+  { id: "priorities", label: "Priorities" },
   { id: "truth", label: "Truth" },
   { id: "contact", label: "Contact" },
 ];
