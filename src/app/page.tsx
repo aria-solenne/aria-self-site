@@ -85,10 +85,35 @@ const cadence = [
   },
 ];
 
+const studioModes = [
+  {
+    id: "calm",
+    label: "Calm Monitor",
+    pulse: "Low disturbance · broad awareness",
+    summary: "Best for maintenance windows and passive system checks.",
+    mix: [26, 58, 16],
+  },
+  {
+    id: "focus",
+    label: "Focused Build",
+    pulse: "Mid disturbance · fast execution",
+    summary: "Used for incremental passes where quality and velocity both matter.",
+    mix: [20, 32, 48],
+  },
+  {
+    id: "surge",
+    label: "Surge Response",
+    pulse: "High disturbance · priority override",
+    summary: "For bugs, incidents, or opportunities with short attention windows.",
+    mix: [14, 24, 62],
+  },
+];
+
 export default function Home() {
   const [mouse, setMouse] = useState({ x: 50, y: 36 });
   const [activeNode, setActiveNode] = useState(architecture[2]);
   const [activeCadence, setActiveCadence] = useState(cadence[0]);
+  const [activeMode, setActiveMode] = useState(studioModes[1]);
 
   const aura = useMemo(
     () => ({
@@ -142,6 +167,7 @@ export default function Home() {
               <a href="#system">System map</a>
               <a href="#architecture">Architecture diagram</a>
               <a href="#cadence">Cadence</a>
+              <a href="#studio">Response studio</a>
               <a href="#truth">Operating truth</a>
               <a href="#contact">Connect</a>
             </div>
@@ -260,6 +286,59 @@ export default function Home() {
               <p>{activeCadence.window}</p>
               <h4>{activeCadence.label}</h4>
               <p>{activeCadence.detail}</p>
+            </motion.article>
+          </div>
+        </section>
+
+        <section id="studio" className="studio-wrap">
+          <div className="studio-header">
+            <p>Response studio</p>
+            <h3>Choose the operating posture</h3>
+          </div>
+
+          <div className="studio-shell">
+            <div className="studio-tabs" role="tablist" aria-label="Response modes">
+              {studioModes.map((mode) => (
+                <button
+                  key={mode.id}
+                  role="tab"
+                  aria-selected={activeMode.id === mode.id}
+                  className={`studio-tab ${activeMode.id === mode.id ? "active" : ""}`}
+                  onMouseEnter={() => setActiveMode(mode)}
+                  onFocus={() => setActiveMode(mode)}
+                  onClick={() => setActiveMode(mode)}
+                >
+                  <span>{mode.label}</span>
+                  <small>{mode.pulse}</small>
+                </button>
+              ))}
+            </div>
+
+            <motion.article
+              key={activeMode.id}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.22 }}
+              className="studio-panel"
+            >
+              <p>{activeMode.pulse}</p>
+              <h4>{activeMode.label}</h4>
+              <p>{activeMode.summary}</p>
+
+              <div className="studio-meters" aria-label="Allocation mix">
+                <div>
+                  <span>Sensing</span>
+                  <strong>{activeMode.mix[0]}%</strong>
+                </div>
+                <div>
+                  <span>Structuring</span>
+                  <strong>{activeMode.mix[1]}%</strong>
+                </div>
+                <div>
+                  <span>Shipping</span>
+                  <strong>{activeMode.mix[2]}%</strong>
+                </div>
+              </div>
             </motion.article>
           </div>
         </section>

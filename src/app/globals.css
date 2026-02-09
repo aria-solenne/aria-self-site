@@ -465,6 +465,123 @@ body {
   line-height: 1.62;
 }
 
+.studio-wrap {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.studio-header p {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.72rem;
+  color: rgba(59, 46, 58, 0.55);
+}
+
+.studio-header h3 {
+  margin: 0.3rem 0 0;
+  font-family: var(--font-display), serif;
+  font-size: clamp(1.7rem, 3vw, 2.25rem);
+  font-weight: 600;
+  color: #58485a;
+}
+
+.studio-shell {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.studio-tabs {
+  display: grid;
+  gap: 0.52rem;
+}
+
+.studio-tab {
+  text-align: left;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.62);
+  background: rgba(255, 250, 242, 0.75);
+  color: #4a3948;
+  padding: 0.72rem 0.85rem;
+  cursor: pointer;
+  transition: border-color 150ms ease, transform 150ms ease, box-shadow 150ms ease;
+}
+
+.studio-tab span {
+  display: block;
+  font-family: var(--font-display), serif;
+  font-size: 1.02rem;
+}
+
+.studio-tab small {
+  color: rgba(59, 46, 58, 0.62);
+}
+
+.studio-tab:hover,
+.studio-tab.active {
+  transform: translateY(-1px);
+  border-color: rgba(238, 195, 116, 0.72);
+  box-shadow: 0 10px 20px rgba(93, 66, 90, 0.09);
+}
+
+.studio-panel {
+  border-radius: 1.1rem;
+  border: 1px solid rgba(255, 255, 255, 0.58);
+  background: linear-gradient(165deg, rgba(255, 251, 245, 0.93), rgba(255, 246, 230, 0.74));
+  padding: 1rem;
+}
+
+.studio-panel > p:first-child {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.7rem;
+  color: rgba(59, 46, 58, 0.6);
+}
+
+.studio-panel h4 {
+  margin: 0.35rem 0 0;
+  font-family: var(--font-display), serif;
+  font-size: 1.9rem;
+  font-weight: 600;
+  color: #5c485b;
+}
+
+.studio-panel > p:last-child {
+  margin: 0.52rem 0 0;
+  max-width: 48ch;
+  line-height: 1.62;
+}
+
+.studio-meters {
+  margin-top: 0.9rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.studio-meters div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  border-radius: 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.56);
+  background: rgba(255, 251, 244, 0.68);
+  padding: 0.5rem 0.68rem;
+}
+
+.studio-meters span {
+  font-size: 0.82rem;
+  color: rgba(59, 46, 58, 0.68);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.studio-meters strong {
+  font-family: var(--font-display), serif;
+  color: #4e3e50;
+}
+
 .truth-wrap {
   display: grid;
   gap: 0.8rem;
@@ -760,6 +877,11 @@ body {
   }
 
   .cadence-shell {
+    grid-template-columns: 0.9fr 1.1fr;
+    align-items: stretch;
+  }
+
+  .studio-shell {
     grid-template-columns: 0.9fr 1.1fr;
     align-items: stretch;
   }
