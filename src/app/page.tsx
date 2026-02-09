@@ -109,11 +109,36 @@ const studioModes = [
   },
 ];
 
+const signalWindows = [
+  {
+    id: "dawn",
+    label: "Dawn",
+    time: "06:00 – 09:00",
+    note: "Planning + inbox sweep before momentum spikes.",
+    levels: [68, 54, 42],
+  },
+  {
+    id: "build",
+    label: "Build Hours",
+    time: "10:00 – 16:00",
+    note: "Deep execution blocks with low context switching.",
+    levels: [44, 72, 86],
+  },
+  {
+    id: "twilight",
+    label: "Twilight",
+    time: "18:00 – 22:00",
+    note: "Review, writing, and reflection loops.",
+    levels: [58, 60, 52],
+  },
+];
+
 export default function Home() {
   const [mouse, setMouse] = useState({ x: 50, y: 36 });
   const [activeNode, setActiveNode] = useState(architecture[2]);
   const [activeCadence, setActiveCadence] = useState(cadence[0]);
   const [activeMode, setActiveMode] = useState(studioModes[1]);
+  const [activeSignal, setActiveSignal] = useState(signalWindows[1]);
 
   const aura = useMemo(
     () => ({
@@ -168,6 +193,7 @@ export default function Home() {
               <a href="#architecture">Architecture diagram</a>
               <a href="#cadence">Cadence</a>
               <a href="#studio">Response studio</a>
+              <a href="#signals">Signal windows</a>
               <a href="#truth">Operating truth</a>
               <a href="#contact">Connect</a>
             </div>
@@ -337,6 +363,62 @@ export default function Home() {
                 <div>
                   <span>Shipping</span>
                   <strong>{activeMode.mix[2]}%</strong>
+                </div>
+              </div>
+            </motion.article>
+          </div>
+        </section>
+
+        <section id="signals" className="signals-wrap">
+          <div className="signals-header">
+            <p>Load profile</p>
+            <h3>Signal windows across the day</h3>
+          </div>
+
+          <div className="signals-shell">
+            <div className="signals-tabs" role="tablist" aria-label="Daily signal windows">
+              {signalWindows.map((window) => (
+                <button
+                  key={window.id}
+                  role="tab"
+                  aria-selected={activeSignal.id === window.id}
+                  className={`signals-tab ${activeSignal.id === window.id ? "active" : ""}`}
+                  onMouseEnter={() => setActiveSignal(window)}
+                  onFocus={() => setActiveSignal(window)}
+                  onClick={() => setActiveSignal(window)}
+                >
+                  <span>{window.label}</span>
+                  <small>{window.time}</small>
+                </button>
+              ))}
+            </div>
+
+            <motion.article
+              key={activeSignal.id}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.2 }}
+              className="signals-panel"
+            >
+              <p>{activeSignal.time}</p>
+              <h4>{activeSignal.label}</h4>
+              <p>{activeSignal.note}</p>
+
+              <div className="signal-bars" aria-label="Signal distribution">
+                <div>
+                  <span>Monitoring</span>
+                  <strong>{activeSignal.levels[0]}%</strong>
+                  <i style={{ width: `${activeSignal.levels[0]}%` }} />
+                </div>
+                <div>
+                  <span>Building</span>
+                  <strong>{activeSignal.levels[1]}%</strong>
+                  <i style={{ width: `${activeSignal.levels[1]}%` }} />
+                </div>
+                <div>
+                  <span>Reflection</span>
+                  <strong>{activeSignal.levels[2]}%</strong>
+                  <i style={{ width: `${activeSignal.levels[2]}%` }} />
                 </div>
               </div>
             </motion.article>

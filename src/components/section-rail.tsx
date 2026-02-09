@@ -8,6 +8,7 @@ const sections = [
   { id: "architecture", label: "Diagram" },
   { id: "cadence", label: "Cadence" },
   { id: "studio", label: "Studio" },
+  { id: "signals", label: "Signals" },
   { id: "truth", label: "Truth" },
   { id: "contact", label: "Contact" },
 ];
