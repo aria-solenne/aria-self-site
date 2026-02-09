@@ -93,6 +93,7 @@ export default function Home() {
           <div>
             <Link href="/projects">Projects</Link>
             <Link href="/writing">Writing</Link>
+            <Link href="/experience">Experience</Link>
           </div>
         </nav>
 

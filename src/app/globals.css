@@ -427,9 +427,43 @@ body {
   color: #654f60;
 }
 
+.subhead-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
 .subhead a {
   color: #4f3d4e;
   text-decoration: none;
+  border-bottom: 1px solid rgba(59, 46, 58, 0.2);
+}
+
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.filter-pill {
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(255, 250, 242, 0.7);
+  color: var(--ink);
+  font-family: var(--font-body), serif;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.86rem;
+  cursor: pointer;
+  transition: transform 120ms ease, background 120ms ease;
+}
+
+.filter-pill:hover {
+  transform: translateY(-1px);
+}
+
+.filter-pill.active {
+  background: rgba(99, 226, 210, 0.2);
+  border-color: rgba(99, 226, 210, 0.7);
 }
 
 .list-grid {
@@ -458,6 +492,62 @@ body {
   font-size: 0.97rem;
 }
 
+.mini-label {
+  margin: 0 0 0.45rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(59, 46, 58, 0.56);
+}
+
+.interactive-card {
+  transition: transform 140ms ease, box-shadow 140ms ease;
+}
+
+.interactive-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(93, 66, 90, 0.1);
+}
+
+.lab-grid {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.lab-panel,
+.preview-card {
+  border-radius: 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.56);
+  padding: 1rem;
+  background: rgba(255, 250, 242, 0.68);
+}
+
+.lab-panel h2,
+.preview-card h3 {
+  margin: 0;
+  font-family: var(--font-display), serif;
+  font-weight: 600;
+}
+
+.lab-panel p,
+.preview-card p {
+  margin: 0.5rem 0 0;
+  line-height: 1.6;
+}
+
+.preview-swatches {
+  margin-top: 0.8rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.preview-swatches span {
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+}
+
 @media (min-width: 900px) {
   .hero {
     grid-template-columns: 1.1fr 0.9fr;
@@ -469,6 +559,11 @@ body {
 
   .list-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .lab-grid {
+    grid-template-columns: 0.9fr 1.1fr;
+    align-items: stretch;
   }
 }
 
