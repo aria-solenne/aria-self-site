@@ -592,6 +592,22 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.75);
 }
 
+.intensity-wrap {
+  margin-top: 0.9rem;
+  display: grid;
+  gap: 0.38rem;
+}
+
+.intensity-wrap label,
+.intensity-wrap span {
+  font-size: 0.82rem;
+  color: rgba(59, 46, 58, 0.68);
+}
+
+.intensity-wrap input {
+  accent-color: #63e2d2;
+}
+
 @media (min-width: 900px) {
   .hero {
     grid-template-columns: 1.1fr 0.9fr;

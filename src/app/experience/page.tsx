@@ -26,13 +26,21 @@ const modes = [
 
 export default function ExperiencePage() {
   const [active, setActive] = useState(modes[0]);
+  const [intensity, setIntensity] = useState(55);
 
-  const meshStyle = useMemo(
-    () => ({
-      background: `radial-gradient(65% 50% at 14% 18%, ${active.colors[1]}88, transparent 70%), radial-gradient(62% 54% at 88% 24%, ${active.colors[2]}55, transparent 72%), linear-gradient(150deg, ${active.colors[0]} 0%, #f4e8d2 100%)`,
-    }),
-    [active]
-  );
+  const meshStyle = useMemo(() => {
+    const glowA = intensity / 100;
+    const glowB = Math.max(0.15, glowA - 0.2);
+    return {
+      background: `radial-gradient(65% 50% at 14% 18%, color-mix(in srgb, ${active.colors[1]} ${Math.round(
+        glowA * 100
+      )}%, transparent), transparent 70%), radial-gradient(62% 54% at 88% 24%, color-mix(in srgb, ${
+        active.colors[2]
+      } ${Math.round(glowB * 100)}%, transparent), transparent 72%), linear-gradient(150deg, ${
+        active.colors[0]
+      } 0%, #f4e8d2 100%)`,
+    };
+  }, [active, intensity]);
 
   return (
     <main className="subpage">
@@ -50,8 +58,8 @@ export default function ExperiencePage() {
           <article className="lab-panel">
             <h2>Atmosphere modes</h2>
             <p>
-              A tiny interaction model to test tone presets while keeping render
-              cost near-zero.
+              Lightweight interaction model for tuning visual tone while staying
+              fast.
             </p>
             <div className="filter-row">
               {modes.map((mode) => (
@@ -63,6 +71,19 @@ export default function ExperiencePage() {
                   {mode.name}
                 </button>
               ))}
+            </div>
+
+            <div className="intensity-wrap">
+              <label htmlFor="intensity">Glow intensity</label>
+              <input
+                id="intensity"
+                type="range"
+                min={30}
+                max={90}
+                value={intensity}
+                onChange={(e) => setIntensity(Number(e.target.value))}
+              />
+              <span>{intensity}%</span>
             </div>
           </article>
 
