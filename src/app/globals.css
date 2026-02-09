@@ -131,7 +131,7 @@ body {
 .hero-copy h1 {
   margin: 0.3rem 0 0.9rem;
   font-family: var(--font-display), serif;
-  font-size: clamp(2.6rem, 7vw, 5.4rem);
+  font-size: clamp(2.6rem, 7vw, 5.2rem);
   line-height: 0.9;
   font-weight: 600;
   color: #59475a;
@@ -140,8 +140,8 @@ body {
 .hero-copy p {
   margin: 0;
   max-width: 44ch;
-  font-size: clamp(1.08rem, 2vw, 1.24rem);
-  line-height: 1.72;
+  font-size: clamp(1.06rem, 2vw, 1.2rem);
+  line-height: 1.7;
 }
 
 .hero-links {
@@ -162,7 +162,7 @@ body {
 }
 
 .portrait-wrap {
-  max-width: 380px;
+  max-width: 350px;
   justify-self: center;
   border-radius: 1.6rem;
   overflow: hidden;
@@ -214,9 +214,132 @@ body {
   font-size: 0.98rem;
 }
 
+.diagram-wrap {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.diagram-header p {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.72rem;
+  color: rgba(59, 46, 58, 0.55);
+}
+
+.diagram-header h3 {
+  margin: 0.3rem 0 0;
+  font-family: var(--font-display), serif;
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
+  font-weight: 600;
+  color: #5b485a;
+}
+
+.diagram-shell {
+  position: relative;
+  border-radius: 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.52);
+  background: var(--card);
+  min-height: 360px;
+  overflow: hidden;
+}
+
+.diagram-lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.diagram-lines path {
+  fill: none;
+  stroke: rgba(99, 226, 210, 0.55);
+  stroke-width: 0.65;
+  stroke-dasharray: 2.6 2;
+}
+
+.diagram-nodes {
+  position: relative;
+  z-index: 1;
+  min-height: 290px;
+}
+
+.node {
+  position: absolute;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(255, 250, 242, 0.9);
+  color: #433445;
+  font-family: var(--font-body), serif;
+  font-size: 0.85rem;
+  padding: 0.44rem 0.74rem;
+  cursor: pointer;
+  transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease;
+}
+
+.node:hover,
+.node.active {
+  transform: translateY(-1px) scale(1.02);
+  border-color: rgba(99, 226, 210, 0.68);
+  box-shadow: 0 8px 18px rgba(84, 68, 88, 0.14);
+}
+
+.node-inbox {
+  top: 12%;
+  left: 8%;
+}
+.node-memory {
+  top: 24%;
+  left: 42%;
+}
+.node-engine {
+  top: 42%;
+  left: 66%;
+}
+.node-ops {
+  top: 64%;
+  left: 16%;
+}
+.node-delivery {
+  top: 70%;
+  left: 58%;
+}
+
+.diagram-detail {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 1;
+  max-width: 310px;
+  border-radius: 0.95rem;
+  border: 1px solid rgba(255, 255, 255, 0.62);
+  background: rgba(255, 251, 245, 0.92);
+  padding: 0.78rem 0.82rem;
+}
+
+.diagram-detail p {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.68rem;
+  color: rgba(59, 46, 58, 0.56);
+}
+
+.diagram-detail h4 {
+  margin: 0.3rem 0 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
 .truth-wrap {
   display: grid;
   gap: 0.8rem;
+}
+
+.truth-wrap.single {
+  grid-template-columns: 1fr;
 }
 
 .truth-panel {
@@ -344,12 +467,18 @@ body {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
-  .truth-wrap {
-    grid-template-columns: 1fr 1fr;
-  }
-
   .list-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .diagram-shell {
+    min-height: 430px;
+  }
+
+  .diagram-detail {
+    max-width: calc(100% - 2rem);
   }
 }
 
@@ -360,5 +489,28 @@ body {
 
   .top-nav a {
     font-size: 0.82rem;
+  }
+
+  .diagram-lines {
+    display: none;
+  }
+
+  .diagram-nodes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    padding: 0.8rem;
+    min-height: auto;
+  }
+
+  .node {
+    position: static;
+    text-align: left;
+  }
+
+  .diagram-detail {
+    position: static;
+    margin: 0.3rem 0.8rem 0.8rem;
+    max-width: 100%;
   }
 }
