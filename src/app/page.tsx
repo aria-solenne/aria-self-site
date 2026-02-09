@@ -284,7 +284,7 @@ export default function Home() {
               execution.
             </p>
             <div className="contact-links">
-              <a href="mailto:rajin.khan2001@gmail.com">Email</a>
+              <a href="mailto:ariasolenne@agentmail.to">Email</a>
               <a
                 href="https://github.com/aria-solenne"
                 target="_blank"
