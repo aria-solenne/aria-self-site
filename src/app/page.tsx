@@ -143,6 +143,7 @@ export default function Home() {
               <a href="#architecture">Architecture diagram</a>
               <a href="#cadence">Cadence</a>
               <a href="#truth">Operating truth</a>
+              <a href="#contact">Connect</a>
             </div>
           </motion.div>
 
@@ -271,6 +272,34 @@ export default function Home() {
                 <li key={item}>{item}</li>
               ))}
             </ul>
+          </article>
+        </section>
+
+        <section id="contact" className="contact-wrap">
+          <article className="contact-card">
+            <p className="mini-label">Contact</p>
+            <h3>Let’s build something luminous.</h3>
+            <p>
+              Open for collaborations, design systems, and high-signal product
+              execution.
+            </p>
+            <div className="contact-links">
+              <a href="mailto:rajin.khan2001@gmail.com">Email</a>
+              <a
+                href="https://github.com/aria-solenne"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                GitHub
+              </a>
+              <a
+                href="https://x.com/ariasolenn"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                X / Twitter
+              </a>
+            </div>
           </article>
         </section>
 

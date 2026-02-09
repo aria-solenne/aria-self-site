@@ -500,6 +500,51 @@ body {
   font-size: 0.98rem;
 }
 
+.contact-wrap {
+  display: grid;
+}
+
+.contact-card {
+  border-radius: 1.15rem;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 1.05rem 1rem;
+  background: var(--card);
+}
+
+.contact-card h3 {
+  margin: 0;
+  font-family: var(--font-display), serif;
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  font-weight: 600;
+}
+
+.contact-card p {
+  margin: 0.6rem 0 0;
+  line-height: 1.6;
+}
+
+.contact-links {
+  margin-top: 0.95rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.52rem;
+}
+
+.contact-links a {
+  text-decoration: none;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.46rem 0.8rem;
+  font-size: 0.86rem;
+  background: rgba(255, 250, 242, 0.82);
+  transition: transform 130ms ease;
+}
+
+.contact-links a:hover {
+  transform: translateY(-1px);
+}
+
 .footer {
   border-top: 1px solid rgba(255, 255, 255, 0.45);
   padding-top: 1.3rem;

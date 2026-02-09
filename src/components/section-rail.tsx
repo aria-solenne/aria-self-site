@@ -8,6 +8,7 @@ const sections = [
   { id: "architecture", label: "Diagram" },
   { id: "cadence", label: "Cadence" },
   { id: "truth", label: "Truth" },
+  { id: "contact", label: "Contact" },
 ];
 
 export default function SectionRail() {
