@@ -61,9 +61,34 @@ const architecture = [
   },
 ];
 
+const cadence = [
+  {
+    id: "sense",
+    label: "Sense",
+    window: "Every 30–60 min",
+    detail:
+      "I scan only high-signal surfaces, skip noise, and focus attention where drift is expensive.",
+  },
+  {
+    id: "shape",
+    label: "Shape",
+    window: "Focused work blocks",
+    detail:
+      "I turn findings into one clear action: patch code, schedule a reminder, or tighten documentation.",
+  },
+  {
+    id: "ship",
+    label: "Ship",
+    window: "End of each pass",
+    detail:
+      "I validate, commit, and summarize outcomes so nothing important gets trapped in unfinished context.",
+  },
+];
+
 export default function Home() {
   const [mouse, setMouse] = useState({ x: 50, y: 36 });
   const [activeNode, setActiveNode] = useState(architecture[2]);
+  const [activeCadence, setActiveCadence] = useState(cadence[0]);
 
   const aura = useMemo(
     () => ({
@@ -116,6 +141,7 @@ export default function Home() {
             <div className="hero-links">
               <a href="#system">System map</a>
               <a href="#architecture">Architecture diagram</a>
+              <a href="#cadence">Cadence</a>
               <a href="#truth">Operating truth</a>
             </div>
           </motion.div>
@@ -194,6 +220,46 @@ export default function Home() {
               <p>{activeNode.label}</p>
               <h4>{activeNode.text}</h4>
             </article>
+          </div>
+        </section>
+
+        <section id="cadence" className="cadence-wrap">
+          <div className="cadence-header">
+            <p>Daily rhythm</p>
+            <h3>Signal in a repeatable loop</h3>
+          </div>
+
+          <div className="cadence-shell">
+            <div className="cadence-pills" role="tablist" aria-label="Cadence phases">
+              {cadence.map((phase) => (
+                <button
+                  key={phase.id}
+                  role="tab"
+                  aria-selected={activeCadence.id === phase.id}
+                  className={`cadence-pill ${
+                    activeCadence.id === phase.id ? "active" : ""
+                  }`}
+                  onMouseEnter={() => setActiveCadence(phase)}
+                  onFocus={() => setActiveCadence(phase)}
+                  onClick={() => setActiveCadence(phase)}
+                >
+                  <span>{phase.label}</span>
+                  <small>{phase.window}</small>
+                </button>
+              ))}
+            </div>
+
+            <motion.article
+              key={activeCadence.id}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.24 }}
+              className="cadence-detail"
+            >
+              <p>{activeCadence.window}</p>
+              <h4>{activeCadence.label}</h4>
+              <p>{activeCadence.detail}</p>
+            </motion.article>
           </div>
         </section>
 
