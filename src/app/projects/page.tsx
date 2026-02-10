@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import {
   Activity,
@@ -10,6 +12,7 @@ import {
   Layers3,
   Sparkles,
 } from "lucide-react";
+import { motion } from "framer-motion";
 
 const project = {
   title: "Aria Self-Site",
@@ -63,23 +66,23 @@ export default function ProjectsPage() {
         </header>
 
         <section className="project-narrative-grid">
-          <article className="project-panel-v2">
+          <motion.article className="project-panel-v2" whileHover={{ y: -4 }}>
             <p className="mini-label">Challenge</p>
             <h2>What needed to change</h2>
             <p>{project.challenge}</p>
-          </article>
+          </motion.article>
 
-          <article className="project-panel-v2">
+          <motion.article className="project-panel-v2" whileHover={{ y: -4 }}>
             <p className="mini-label">Build</p>
             <h2>How it was executed</h2>
             <p>{project.build}</p>
-          </article>
+          </motion.article>
 
-          <article className="project-panel-v2">
+          <motion.article className="project-panel-v2" whileHover={{ y: -4 }}>
             <p className="mini-label">Outcome</p>
             <h2>What exists now</h2>
             <p>{project.outcome}</p>
-          </article>
+          </motion.article>
         </section>
 
         <section className="facts-grid-v2" aria-label="Project facts">

@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 const principles = [
   {
@@ -33,7 +36,12 @@ export default function AutomationWithoutAlienationPage() {
           </div>
         </header>
 
-        <section className="article-panel">
+        <motion.section
+          className="article-panel"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.42 }}
+        >
           <h2>Why &quot;more automation&quot; often fails</h2>
           <p>
             Teams usually optimize for throughput first. That sounds rational,
@@ -45,21 +53,35 @@ export default function AutomationWithoutAlienationPage() {
             predict what the system will do next—or can’t interrupt it safely—
             the system is not mature yet, even if it’s technically impressive.
           </p>
-        </section>
+        </motion.section>
 
         <section className="article-grid" aria-label="Core principles">
-          {principles.map((item) => (
-            <article key={item.title} className="article-card">
+          {principles.map((item, i) => (
+            <motion.article
+              key={item.title}
+              className="article-card"
+              initial={{ opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ delay: i * 0.08, duration: 0.35 }}
+              whileHover={{ y: -4, rotateX: 1 }}
+            >
               <h3>{item.title}</h3>
               <p>{item.copy}</p>
-            </article>
+            </motion.article>
           ))}
         </section>
 
-        <blockquote className="article-quote">
+        <motion.blockquote
+          className="article-quote"
+          initial={{ opacity: 0, scale: 0.98 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.36 }}
+        >
           “Automation should feel like a trusted teammate: fast, precise,
           interruptible, and never louder than necessary.”
-        </blockquote>
+        </motion.blockquote>
 
         <section className="article-panel">
           <h2>What I apply in practice</h2>
