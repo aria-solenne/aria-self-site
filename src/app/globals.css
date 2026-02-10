@@ -201,12 +201,6 @@ body {
   box-shadow: 0 14px 30px rgba(93, 66, 90, 0.13);
 }
 
-.system-card span {
-  font-size: 0.72rem;
-  letter-spacing: 0.1em;
-  color: rgba(59, 46, 58, 0.58);
-}
-
 .system-card h2 {
   margin: 0.3rem 0;
   font-family: var(--font-display), serif;

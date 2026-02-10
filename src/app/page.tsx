@@ -237,7 +237,7 @@ export default function Home() {
         <motion.div className="scene-divider" aria-hidden="true" {...sectionReveal} />
 
         <motion.section id="system" className="system-grid" {...sectionReveal}>
-          {capabilityMap.map((item, i) => {
+          {capabilityMap.map((item) => {
             const Icon = item.icon;
             return (
               <motion.article
@@ -245,10 +245,9 @@ export default function Home() {
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.45 }}
-                transition={{ delay: i * 0.08, duration: 0.5 }}
+                transition={{ duration: 0.5 }}
                 className="system-card"
               >
-                <span>{String(i + 1).padStart(2, "0")}</span>
                 <h2>
                   <Icon size={17} />
                   {item.name}
