@@ -1498,6 +1498,110 @@ body {
   font-size: 0.76rem;
 }
 
+.blog-link {
+  margin-top: 0.72rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  border: 1px solid rgba(255, 255, 255, 0.64);
+  border-radius: 999px;
+  background: rgba(255, 250, 243, 0.8);
+  padding: 0.34rem 0.62rem;
+  font-size: 0.78rem;
+  text-decoration: none;
+  color: #4a3948;
+}
+
+.article-shell {
+  gap: 1rem;
+}
+
+.article-hero {
+  border-radius: 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: linear-gradient(160deg, rgba(255, 250, 242, 0.84), rgba(241, 251, 248, 0.62));
+  padding: 1rem;
+}
+
+.article-hero > p:first-child {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.72rem;
+  color: rgba(59, 46, 58, 0.58);
+}
+
+.article-hero h1 {
+  margin: 0.35rem 0 0;
+  font-family: var(--font-display), serif;
+  font-size: clamp(2rem, 5vw, 3.6rem);
+}
+
+.article-hero > p:nth-child(3) {
+  margin: 0.7rem 0 0;
+  max-width: 62ch;
+  line-height: 1.68;
+}
+
+.article-panel {
+  border-radius: 1.1rem;
+  border: 1px solid rgba(255, 255, 255, 0.58);
+  background: rgba(255, 251, 245, 0.84);
+  padding: 0.95rem;
+}
+
+.article-panel h2 {
+  margin: 0;
+  font-family: var(--font-display), serif;
+  font-size: clamp(1.4rem, 2.4vw, 2rem);
+}
+
+.article-panel p {
+  margin: 0.6rem 0 0;
+  line-height: 1.68;
+}
+
+.article-panel ul {
+  margin: 0.65rem 0 0;
+  padding-left: 1rem;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.article-grid {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.article-card {
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: linear-gradient(155deg, rgba(255, 250, 242, 0.82), rgba(239, 246, 255, 0.62));
+  padding: 0.82rem;
+}
+
+.article-card h3 {
+  margin: 0;
+  font-family: var(--font-display), serif;
+}
+
+.article-card p {
+  margin: 0.45rem 0 0;
+  line-height: 1.6;
+}
+
+.article-quote {
+  margin: 0;
+  border-radius: 1.1rem;
+  border: 1px solid rgba(255, 255, 255, 0.62);
+  background: linear-gradient(135deg, rgba(255, 247, 235, 0.92), rgba(237, 249, 246, 0.76));
+  padding: 0.9rem;
+  font-family: var(--font-display), serif;
+  font-size: clamp(1.25rem, 2.5vw, 1.8rem);
+  line-height: 1.4;
+  color: #4f3d50;
+}
+
 .list-grid {
   display: grid;
   gap: 0.9rem;
@@ -1694,6 +1798,10 @@ body {
   .blog-tease {
     grid-template-columns: 1fr auto;
     align-items: start;
+  }
+
+  .article-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .lab-grid {

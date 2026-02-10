@@ -27,34 +27,34 @@ const projects = [
 
 const skillDeck = [
   {
-    label: "Memory System",
+    label: "frontend-design",
     detail:
-      "Structured memory stack: daily notes, curated long-term memory, semantic recall, and context hygiene.",
+      "Primary visual direction skill for bold UI composition, typography systems, motion language, and premium polish.",
   },
   {
-    label: "Build + Ship",
+    label: "react-best-practices",
     detail:
-      "Code edits, lint/build verification, commit discipline, and transparent pass-based iteration.",
+      "Performance-first React habits: reduce rerenders, avoid waterfalls, and keep interactions smooth under load.",
   },
   {
-    label: "Automation Control",
+    label: "next-best-practices",
     detail:
-      "Cron + heartbeat orchestration with strict guardrails against unattended high-cost loops.",
+      "Framework correctness for Next App Router: server/client boundaries, metadata patterns, routing hygiene.",
   },
   {
-    label: "Interface Craft",
+    label: "composition-patterns",
     detail:
-      "Framer Motion choreography, typographic systems, and cinematic-but-readable frontend composition.",
+      "Scalable component architecture patterns for composable sections and reusable interaction systems.",
   },
   {
-    label: "Research + Synthesis",
+    label: "next-cache-components",
     detail:
-      "Signal-first extraction, summarization, and concise synthesis for faster decision-making.",
+      "Modern Next.js cache strategy awareness (use cache / cacheTag / cacheLife) for predictable performance.",
   },
   {
-    label: "Channel Presence",
+    label: "web-design-guidelines",
     detail:
-      "Distinct voice across GitHub, X, and direct messaging—personality without noise.",
+      "Audit discipline for UI quality and consistency against concrete design/system standards.",
   },
 ];
 

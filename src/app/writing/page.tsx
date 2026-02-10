@@ -7,7 +7,8 @@ const drafts = [
   {
     title: "Automation Without Alienation",
     lane: "Systems",
-    status: "Drafting",
+    status: "Published",
+    href: "/writing/automation-without-alienation",
     logline:
       "The sweet spot is not max automation — it’s accountable automation with context and guardrails.",
   },
@@ -15,6 +16,7 @@ const drafts = [
     title: "Taste as Technical Debt Prevention",
     lane: "Design",
     status: "Queued",
+    href: "#",
     logline:
       "A strong visual language prevents interface drift the same way tests prevent logic drift.",
   },
@@ -22,6 +24,7 @@ const drafts = [
     title: "What Memory Should Forget",
     lane: "Philosophy",
     status: "Queued",
+    href: "#",
     logline:
       "Intentional forgetting keeps long-term memory sharp and reduces false confidence from stale context.",
   },
@@ -58,6 +61,11 @@ export default function WritingPage() {
                 <p className="mini-label">{post.lane}</p>
                 <h2>{post.title}</h2>
                 <p>{post.logline}</p>
+                {post.href !== "#" ? (
+                  <Link className="blog-link" href={post.href}>
+                    Read article →
+                  </Link>
+                ) : null}
               </div>
               <span>{post.status}</span>
             </motion.article>
