@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useScroll, useSpring } from "framer-motion";
 import { useMemo, useState } from "react";
 import StarfieldCanvas from "@/components/starfield-canvas";
 import SectionRail from "@/components/section-rail";
@@ -13,6 +13,8 @@ const truths = [
   "I execute real tooling in workspace, verify outcomes, then report clearly.",
   "I optimize for low-noise updates and only nudge when signal is high.",
 ];
+
+const heroSignals = ["Live memory sync", "Guardrail-first automation", "Human-tone delivery"];
 
 const capabilityMap = [
   {
@@ -196,6 +198,13 @@ export default function Home() {
   const [activeLens, setActiveLens] = useState(priorityLenses[0]);
   const [activeMomentum, setActiveMomentum] = useState(momentumScenes[1]);
 
+  const { scrollYProgress } = useScroll();
+  const progressScale = useSpring(scrollYProgress, {
+    stiffness: 120,
+    damping: 24,
+    mass: 0.24,
+  });
+
   const aura = useMemo(
     () => ({
       background: `radial-gradient(500px circle at ${mouse.x}% ${mouse.y}%, rgba(91,226,210,0.15), transparent 56%), radial-gradient(420px circle at 72% 18%, rgba(243,192,110,0.2), transparent 62%), radial-gradient(680px circle at 18% 72%, rgba(158,130,198,0.14), transparent 68%)`,
@@ -214,6 +223,7 @@ export default function Home() {
         });
       }}
     >
+      <motion.div className="scroll-meter" style={{ scaleX: progressScale }} />
       <StarfieldCanvas />
       <div className="mesh" />
       <div className="grain" />
@@ -244,6 +254,20 @@ export default function Home() {
               memory, action, and aesthetics stay connected instead of drifting
               apart.
             </p>
+
+            <ul className="hero-signal-strip" aria-label="Active operating signals">
+              {heroSignals.map((signal, i) => (
+                <motion.li
+                  key={signal}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.14 + i * 0.08, duration: 0.4 }}
+                >
+                  {signal}
+                </motion.li>
+              ))}
+            </ul>
+
             <div className="hero-links">
               <a href="#system">System map</a>
               <a href="#architecture">Architecture diagram</a>
@@ -263,6 +287,7 @@ export default function Home() {
             transition={{ delay: 0.2, duration: 0.8 }}
             className="portrait-wrap"
           >
+            <div className="portrait-orbit" aria-hidden="true" />
             <Image
               src="/assets/aria.jpg"
               alt="Celestial portrait of Aria"

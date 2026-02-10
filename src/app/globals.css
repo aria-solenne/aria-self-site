@@ -34,6 +34,18 @@ body {
   isolation: isolate;
 }
 
+.scroll-meter {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  transform-origin: 0 50%;
+  background: linear-gradient(90deg, rgba(99, 226, 210, 0.92), rgba(238, 195, 116, 0.88), rgba(165, 139, 198, 0.9));
+  z-index: 12;
+  box-shadow: 0 0 16px rgba(99, 226, 210, 0.4);
+}
+
 .mesh,
 .aura,
 .grain,
@@ -188,6 +200,27 @@ body {
   line-height: 1.7;
 }
 
+.hero-signal-strip {
+  margin: 0.95rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.48rem;
+}
+
+.hero-signal-strip li {
+  font-size: 0.79rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(59, 46, 58, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.66);
+  border-radius: 999px;
+  padding: 0.35rem 0.62rem;
+  background: linear-gradient(140deg, rgba(255, 251, 245, 0.9), rgba(244, 255, 252, 0.66));
+  box-shadow: 0 6px 14px rgba(93, 66, 90, 0.07);
+}
+
 .hero-links {
   margin-top: 1.1rem;
   display: flex;
@@ -212,6 +245,23 @@ body {
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.55);
   box-shadow: 0 22px 70px rgba(119, 87, 116, 0.16);
+  position: relative;
+}
+
+.portrait-orbit {
+  position: absolute;
+  inset: -34%;
+  background: conic-gradient(
+    from 0deg,
+    rgba(99, 226, 210, 0) 0deg,
+    rgba(99, 226, 210, 0.32) 66deg,
+    rgba(238, 195, 116, 0.24) 152deg,
+    rgba(165, 139, 198, 0.3) 250deg,
+    rgba(99, 226, 210, 0) 360deg
+  );
+  filter: blur(12px);
+  animation: orbit-spin 14s linear infinite;
+  pointer-events: none;
 }
 
 .portrait {
@@ -1240,6 +1290,22 @@ body {
 
 .intensity-wrap input {
   accent-color: #63e2d2;
+}
+
+@keyframes orbit-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portrait-orbit {
+    animation: none;
+  }
+
+  .scroll-meter {
+    transition: none;
+  }
 }
 
 @media (min-width: 900px) {
