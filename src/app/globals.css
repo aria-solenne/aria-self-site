@@ -281,12 +281,13 @@ body {
   padding: 1rem 0.95rem;
   background: var(--card);
   backdrop-filter: blur(8px);
-  transition: transform 180ms ease, box-shadow 180ms ease;
+  transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 240ms ease;
+  transform-style: preserve-3d;
 }
 
 .system-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 24px rgba(93, 66, 90, 0.11);
+  transform: translateY(-4px) rotateX(1.5deg) rotateY(-1.5deg);
+  box-shadow: 0 14px 30px rgba(93, 66, 90, 0.13);
 }
 
 .system-card span {
@@ -351,6 +352,15 @@ body {
   stroke: rgba(99, 226, 210, 0.55);
   stroke-width: 0.65;
   stroke-dasharray: 2.6 2;
+  animation: diagram-flow 14s linear infinite;
+}
+
+.diagram-lines path:nth-child(2n) {
+  animation-duration: 11s;
+}
+
+.diagram-lines path:nth-child(3n) {
+  animation-duration: 9s;
 }
 
 .diagram-nodes {
@@ -961,6 +971,28 @@ body {
   gap: 0.9rem;
 }
 
+.cadence-detail,
+.studio-panel,
+.signals-panel,
+.priorities-panel,
+.momentum-panel,
+.truth-panel,
+.contact-card {
+  transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 240ms ease;
+  transform-style: preserve-3d;
+}
+
+.cadence-detail:hover,
+.studio-panel:hover,
+.signals-panel:hover,
+.priorities-panel:hover,
+.momentum-panel:hover,
+.truth-panel:hover,
+.contact-card:hover {
+  transform: translateY(-4px) rotateX(1deg);
+  box-shadow: 0 14px 30px rgba(93, 66, 90, 0.12);
+}
+
 .momentum-ring {
   width: 112px;
   aspect-ratio: 1;
@@ -968,6 +1000,7 @@ body {
   display: grid;
   place-items: center;
   padding: 8px;
+  animation: ring-breathe 3.6s ease-in-out infinite;
 }
 
 .momentum-ring span {
@@ -1298,13 +1331,52 @@ body {
   }
 }
 
+@keyframes diagram-flow {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+
+@keyframes ring-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.03);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .portrait-orbit {
+  .portrait-orbit,
+  .diagram-lines path,
+  .momentum-ring {
     animation: none;
   }
 
-  .scroll-meter {
+  .scroll-meter,
+  .system-card,
+  .cadence-detail,
+  .studio-panel,
+  .signals-panel,
+  .priorities-panel,
+  .momentum-panel,
+  .truth-panel,
+  .contact-card {
     transition: none;
+  }
+
+  .system-card:hover,
+  .cadence-detail:hover,
+  .studio-panel:hover,
+  .signals-panel:hover,
+  .priorities-panel:hover,
+  .momentum-panel:hover,
+  .truth-panel:hover,
+  .contact-card:hover {
+    transform: none;
+    box-shadow: none;
   }
 }
 

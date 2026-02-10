@@ -162,6 +162,13 @@ const priorityLenses = [
   },
 ];
 
+const sectionReveal = {
+  initial: { opacity: 0, y: 22 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, amount: 0.2 },
+  transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] as const },
+};
+
 const momentumScenes = [
   {
     id: "ignite",
@@ -299,7 +306,7 @@ export default function Home() {
           </motion.figure>
         </section>
 
-        <section id="system" className="system-grid">
+        <motion.section id="system" className="system-grid" {...sectionReveal}>
           {capabilityMap.map((item, i) => (
             <motion.article
               key={item.name}
@@ -314,9 +321,9 @@ export default function Home() {
               <p>{item.detail}</p>
             </motion.article>
           ))}
-        </section>
+        </motion.section>
 
-        <section id="architecture" className="diagram-wrap">
+        <motion.section id="architecture" className="diagram-wrap" {...sectionReveal}>
           <div className="diagram-header">
             <p>Connected model</p>
             <h3>How I work end-to-end</h3>
@@ -357,9 +364,9 @@ export default function Home() {
               <h4>{activeNode.text}</h4>
             </article>
           </div>
-        </section>
+        </motion.section>
 
-        <section id="cadence" className="cadence-wrap">
+        <motion.section id="cadence" className="cadence-wrap" {...sectionReveal}>
           <div className="cadence-header">
             <p>Daily rhythm</p>
             <h3>Signal in a repeatable loop</h3>
@@ -397,9 +404,9 @@ export default function Home() {
               <p>{activeCadence.detail}</p>
             </motion.article>
           </div>
-        </section>
+        </motion.section>
 
-        <section id="studio" className="studio-wrap">
+        <motion.section id="studio" className="studio-wrap" {...sectionReveal}>
           <div className="studio-header">
             <p>Response studio</p>
             <h3>Choose the operating posture</h3>
@@ -450,9 +457,9 @@ export default function Home() {
               </div>
             </motion.article>
           </div>
-        </section>
+        </motion.section>
 
-        <section id="signals" className="signals-wrap">
+        <motion.section id="signals" className="signals-wrap" {...sectionReveal}>
           <div className="signals-header">
             <p>Load profile</p>
             <h3>Signal windows across the day</h3>
@@ -506,9 +513,9 @@ export default function Home() {
               </div>
             </motion.article>
           </div>
-        </section>
+        </motion.section>
 
-        <section id="priorities" className="priorities-wrap">
+        <motion.section id="priorities" className="priorities-wrap" {...sectionReveal}>
           <div className="priorities-header">
             <p>Decision frame</p>
             <h3>Pick a lens before touching the keyboard</h3>
@@ -562,9 +569,9 @@ export default function Home() {
               </div>
             </motion.article>
           </div>
-        </section>
+        </motion.section>
 
-        <section id="momentum" className="momentum-wrap">
+        <motion.section id="momentum" className="momentum-wrap" {...sectionReveal}>
           <div className="momentum-header">
             <p>Execution feel</p>
             <h3>Momentum strip for progressive passes</h3>
@@ -618,9 +625,9 @@ export default function Home() {
               </div>
             </motion.article>
           </div>
-        </section>
+        </motion.section>
 
-        <section id="truth" className="truth-wrap single">
+        <motion.section id="truth" className="truth-wrap single" {...sectionReveal}>
           <article className="truth-panel">
             <h3>Reality, not hype</h3>
             <ul>
@@ -629,9 +636,9 @@ export default function Home() {
               ))}
             </ul>
           </article>
-        </section>
+        </motion.section>
 
-        <section id="contact" className="contact-wrap">
+        <motion.section id="contact" className="contact-wrap" {...sectionReveal}>
           <article className="contact-card">
             <p className="mini-label">Contact</p>
             <h3>Let’s build something luminous.</h3>
@@ -657,7 +664,7 @@ export default function Home() {
               </a>
             </div>
           </article>
-        </section>
+        </motion.section>
 
         <footer className="footer">
           <p>
