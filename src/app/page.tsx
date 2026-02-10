@@ -216,14 +216,13 @@ export default function Home() {
         <div className="scene-divider" aria-hidden="true" />
 
         <section id="system" className="system-grid">
-          {capabilityMap.map((item, i) => {
+          {capabilityMap.map((item) => {
             const Icon = item.icon;
             return (
               <article
                 key={item.name}
                 className="system-card"
               >
-                <span>{String(i + 1).padStart(2, "0")}</span>
                 <h2>
                   <Icon size={17} />
                   {item.name}
