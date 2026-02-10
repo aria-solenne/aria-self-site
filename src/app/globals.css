@@ -87,8 +87,8 @@ body {
   position: relative;
   z-index: 4;
   display: grid;
-  gap: clamp(2.2rem, 4.4vw, 3.8rem);
-  padding: clamp(1.5rem, 3vw, 2.2rem) clamp(1rem, 3vw, 2.1rem) 4rem;
+  gap: clamp(2.4rem, 4.8vw, 4.2rem);
+  padding: clamp(1.7rem, 3.2vw, 2.5rem) clamp(1rem, 3vw, 2.2rem) 4.4rem;
 }
 
 .top-nav {
@@ -97,12 +97,12 @@ body {
   align-items: center;
   gap: 0.8rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-  padding-bottom: 0.85rem;
+  padding-bottom: 0.95rem;
 }
 
 .wordmark {
   font-family: var(--font-display), serif;
-  font-size: 1.35rem;
+  font-size: 1.42rem;
   letter-spacing: 0.02em;
 }
 
@@ -129,22 +129,22 @@ body {
 
 .hero {
   display: grid;
-  gap: clamp(1.1rem, 2.8vw, 2rem);
+  gap: clamp(1.3rem, 3vw, 2.3rem);
   align-items: center;
 }
 
 .hero-copy h1 {
-  margin: 0.3rem 0 0.9rem;
+  margin: 0.15rem 0 0.95rem;
   font-family: var(--font-display), serif;
-  font-size: clamp(2.6rem, 7vw, 5.2rem);
-  line-height: 0.9;
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  line-height: 0.92;
   font-weight: 600;
   color: #59475a;
 }
 
 .hero-copy p {
   margin: 0;
-  max-width: 44ch;
+  max-width: 47ch;
   font-size: clamp(1.06rem, 2vw, 1.2rem);
   line-height: 1.7;
 }
@@ -411,7 +411,7 @@ body {
   border-radius: 1.1rem;
   border: 1px solid rgba(255, 255, 255, 0.58);
   background: linear-gradient(165deg, rgba(255, 251, 245, 0.92), rgba(255, 247, 235, 0.72));
-  padding: 1rem;
+  padding: 1.08rem;
 }
 
 .cadence-detail > p:first-child {
@@ -499,7 +499,7 @@ body {
   border-radius: 1.1rem;
   border: 1px solid rgba(255, 255, 255, 0.58);
   background: linear-gradient(165deg, rgba(255, 251, 245, 0.93), rgba(245, 236, 255, 0.62));
-  padding: 1rem;
+  padding: 1.08rem;
 }
 
 .signals-panel > p:first-child {
@@ -525,7 +525,7 @@ body {
 }
 
 .signal-bars {
-  margin-top: 0.9rem;
+  margin-top: 1rem;
   display: grid;
   gap: 0.55rem;
 }
@@ -707,7 +707,7 @@ body {
 
 .contact-enhanced {
   background: linear-gradient(165deg, rgba(255, 251, 245, 0.95), rgba(236, 250, 247, 0.72));
-  padding: 1.2rem;
+  padding: 1.35rem;
   box-shadow: 0 16px 34px rgba(92, 68, 96, 0.12);
 }
 
@@ -717,7 +717,7 @@ body {
 }
 
 .contact-columns {
-  margin-top: 0.9rem;
+  margin-top: 1rem;
   display: grid;
   gap: 0.7rem;
 }
@@ -780,10 +780,10 @@ body {
 }
 
 .subshell {
-  width: min(960px, 100%);
+  width: min(1020px, 100%);
   margin: 0 auto;
   display: grid;
-  gap: 1rem;
+  gap: 1.15rem;
 }
 
 .subhead p {
@@ -855,7 +855,7 @@ body {
   border-radius: 1.25rem;
   border: 1px solid rgba(255, 255, 255, 0.58);
   background: linear-gradient(160deg, rgba(255, 250, 240, 0.78), rgba(247, 239, 255, 0.58));
-  padding: 1rem;
+  padding: 1.08rem;
   display: grid;
   gap: 0.85rem;
 }
@@ -897,7 +897,7 @@ body {
   border-radius: 1.05rem;
   border: 1px solid rgba(255, 255, 255, 0.62);
   background: rgba(255, 251, 245, 0.9);
-  padding: 0.95rem;
+  padding: 1.05rem;
   display: grid;
   gap: 0.85rem;
 }
@@ -1061,7 +1061,7 @@ body {
   border-radius: 1rem;
   border: 1px solid rgba(255, 255, 255, 0.62);
   background: linear-gradient(155deg, rgba(255, 250, 242, 0.88), rgba(239, 247, 255, 0.65));
-  padding: 0.9rem;
+  padding: 1rem;
 }
 
 .featured-essay h2 {
@@ -1083,7 +1083,7 @@ body {
   border-radius: 1rem;
   border: 1px solid rgba(255, 255, 255, 0.62);
   background: linear-gradient(155deg, rgba(255, 250, 242, 0.85), rgba(238, 246, 255, 0.65));
-  padding: 0.82rem;
+  padding: 0.92rem;
   display: grid;
   gap: 0.7rem;
   transition: box-shadow 180ms ease;
@@ -1122,7 +1122,7 @@ body {
 }
 
 .article-shell {
-  gap: 1rem;
+  gap: 1.15rem;
 }
 
 .article-hero {
@@ -1156,7 +1156,7 @@ body {
   border-radius: 1.1rem;
   border: 1px solid rgba(255, 255, 255, 0.58);
   background: rgba(255, 251, 245, 0.84);
-  padding: 0.95rem;
+  padding: 1.05rem;
 }
 
 .article-panel h2 {
@@ -1186,7 +1186,7 @@ body {
   border-radius: 1rem;
   border: 1px solid rgba(255, 255, 255, 0.6);
   background: linear-gradient(155deg, rgba(255, 250, 242, 0.82), rgba(239, 246, 255, 0.62));
-  padding: 0.82rem;
+  padding: 0.92rem;
 }
 
 .article-card h3 {
@@ -1204,7 +1204,7 @@ body {
   border-radius: 1.1rem;
   border: 1px solid rgba(255, 255, 255, 0.62);
   background: linear-gradient(135deg, rgba(255, 247, 235, 0.92), rgba(237, 249, 246, 0.76));
-  padding: 0.9rem;
+  padding: 1rem;
   font-family: var(--font-display), serif;
   font-size: clamp(1.25rem, 2.5vw, 1.8rem);
   line-height: 1.4;
@@ -1294,7 +1294,7 @@ body {
 }
 
 .intensity-wrap {
-  margin-top: 0.9rem;
+  margin-top: 1rem;
   display: grid;
   gap: 0.38rem;
 }
@@ -1377,7 +1377,7 @@ body {
 
 @media (min-width: 900px) {
   .hero {
-    grid-template-columns: 1.1fr 0.9fr;
+    grid-template-columns: 1.15fr 0.85fr;
   }
 
   .system-grid {
@@ -1389,7 +1389,7 @@ body {
   }
 
   .cinematic-project-stage {
-    grid-template-columns: 0.85fr 1.15fr;
+    grid-template-columns: 0.82fr 1.18fr;
     align-items: start;
   }
 
@@ -1434,6 +1434,10 @@ body {
 }
 
 @media (max-width: 680px) {
+  .shell {
+    gap: 2rem;
+  }
+
   .wordmark {
     font-size: 1.15rem;
   }
