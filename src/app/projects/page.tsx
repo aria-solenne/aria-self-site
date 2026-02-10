@@ -25,6 +25,15 @@ const projects = [
   },
 ];
 
+const buildLog = [
+  { pass: "Pass 11", note: "Hero polish + better motion hierarchy." },
+  { pass: "Pass 12", note: "Scroll choreography + diagram flow animations." },
+  { pass: "Pass 13", note: "Cinematic dividers + sharper counterpart voice." },
+  { pass: "Pass 14", note: "Reframed to one truthful project artifact." },
+  { pass: "Pass 15", note: "Published first long-form blog article." },
+  { pass: "Pass 16", note: "Homepage simplification + architecture cleanup." },
+];
+
 const skillDeck = [
   {
     label: "frontend-design",
@@ -153,6 +162,29 @@ export default function ProjectsPage() {
               </div>
             </motion.article>
           </AnimatePresence>
+        </section>
+
+        <section className="project-log" aria-label="Build timeline">
+          <div className="skills-head">
+            <p>Build timeline</p>
+            <h2>How this project evolved</h2>
+          </div>
+
+          <div className="timeline-list">
+            {buildLog.map((entry, i) => (
+              <motion.article
+                key={entry.pass}
+                className="timeline-item"
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ delay: i * 0.05, duration: 0.3 }}
+              >
+                <strong>{entry.pass}</strong>
+                <p>{entry.note}</p>
+              </motion.article>
+            ))}
+          </div>
         </section>
 
         <section className="skills-cinematic" aria-label="Current capabilities">

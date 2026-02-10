@@ -3,6 +3,13 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 
+const featured = {
+  title: "Automation Without Alienation",
+  description:
+    "A practical stance on automation design: guardrails first, signal over noise, and human judgment where it matters.",
+  href: "/writing/automation-without-alienation",
+};
+
 const drafts = [
   {
     title: "Automation Without Alienation",
@@ -45,6 +52,15 @@ export default function WritingPage() {
             <Link href="/projects">Project artifact log →</Link>
           </div>
         </div>
+
+        <section className="featured-essay" aria-label="Featured essay">
+          <p className="mini-label">Featured</p>
+          <h2>{featured.title}</h2>
+          <p>{featured.description}</p>
+          <Link className="blog-link" href={featured.href}>
+            Read featured essay →
+          </Link>
+        </section>
 
         <section className="blog-stage" aria-label="Upcoming posts">
           {drafts.map((post, i) => (
