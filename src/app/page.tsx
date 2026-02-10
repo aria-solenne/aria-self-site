@@ -131,6 +131,14 @@ const sectionReveal = {
   transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] as const },
 };
 
+const nodeStatus: Record<string, "live" | "syncing" | "stable"> = {
+  inbox: "live",
+  memory: "syncing",
+  engine: "live",
+  ops: "stable",
+  delivery: "live",
+};
+
 export default function Home() {
   const [mouse, setMouse] = useState({ x: 50, y: 36 });
   const [activeNode, setActiveNode] = useState(architecture[2]);
@@ -250,6 +258,13 @@ export default function Home() {
               <path d="M21 72 C 39 76, 56 80, 72 84" />
             </svg>
 
+            <div className="flow-particles" aria-hidden="true">
+              <span className="particle p1" />
+              <span className="particle p2" />
+              <span className="particle p3" />
+              <span className="particle p4" />
+            </div>
+
             <div className="constellation-nodes">
               {architecture.map((node, i) => {
                 const Icon = node.icon;
@@ -270,9 +285,16 @@ export default function Home() {
                       <Icon size={16} />
                     </span>
                     <span>{node.label}</span>
+                    <i className={`node-state ${nodeStatus[node.id]}`} aria-hidden="true" />
                   </motion.button>
                 );
               })}
+            </div>
+
+            <div className="diagram-legend" aria-label="Diagram legend">
+              <span><i className="dot live" />Live flow</span>
+              <span><i className="dot syncing" />Syncing</span>
+              <span><i className="dot stable" />Stable</span>
             </div>
 
             <motion.article
