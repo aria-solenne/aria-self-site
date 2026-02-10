@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useScroll, useSpring } from "framer-motion";
+import { motion, useScroll, useSpring } from "@/components/motion-lite";
 import {
   Activity,
   BarChart3,
