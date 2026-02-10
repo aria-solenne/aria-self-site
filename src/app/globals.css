@@ -291,26 +291,6 @@ body {
   min-height: 320px;
 }
 
-.flow-particles {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.particle {
-  position: absolute;
-  width: 7px;
-  height: 7px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 0 12px rgba(99, 226, 210, 0.7);
-}
-
-.particle.p1 { animation: drift-a 7s linear infinite; }
-.particle.p2 { animation: drift-b 8.2s linear infinite; }
-.particle.p3 { animation: drift-c 6.6s linear infinite; }
-.particle.p4 { animation: drift-d 9.3s linear infinite; }
 
 .constellation-node {
   position: absolute;
@@ -358,60 +338,6 @@ body {
   box-shadow: 0 10px 22px rgba(84, 68, 88, 0.16);
 }
 
-.node-state {
-  width: 0.46rem;
-  height: 0.46rem;
-  border-radius: 999px;
-  margin-left: 0.1rem;
-}
-
-.node-state.live {
-  background: rgba(96, 226, 210, 0.95);
-  box-shadow: 0 0 0 4px rgba(96, 226, 210, 0.22);
-}
-
-.node-state.syncing {
-  background: rgba(165, 139, 198, 0.95);
-  box-shadow: 0 0 0 4px rgba(165, 139, 198, 0.2);
-}
-
-.node-state.stable {
-  background: rgba(238, 195, 116, 0.92);
-  box-shadow: 0 0 0 4px rgba(238, 195, 116, 0.22);
-}
-
-.diagram-legend {
-  position: absolute;
-  left: 1rem;
-  bottom: 1rem;
-  z-index: 1;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.42rem;
-}
-
-.diagram-legend span {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  padding: 0.28rem 0.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.65);
-  border-radius: 999px;
-  background: rgba(255, 251, 245, 0.8);
-}
-
-.dot {
-  width: 0.42rem;
-  height: 0.42rem;
-  border-radius: 999px;
-}
-
-.dot.live { background: rgba(96, 226, 210, 0.95); }
-.dot.syncing { background: rgba(165, 139, 198, 0.95); }
-.dot.stable { background: rgba(238, 195, 116, 0.95); }
 
 .diagram-detail {
   position: absolute;
@@ -1637,29 +1563,9 @@ body {
   }
 }
 
-@keyframes drift-a {
-  0% { left: 12%; top: 22%; opacity: 0; }
-  10% { opacity: 1; }
-  100% { left: 38%; top: 39%; opacity: 0; }
-}
 
-@keyframes drift-b {
-  0% { left: 38%; top: 39%; opacity: 0; }
-  10% { opacity: 1; }
-  100% { left: 67%; top: 55%; opacity: 0; }
-}
 
-@keyframes drift-c {
-  0% { left: 21%; top: 72%; opacity: 0; }
-  10% { opacity: 1; }
-  100% { left: 38%; top: 39%; opacity: 0; }
-}
 
-@keyframes drift-d {
-  0% { left: 67%; top: 55%; opacity: 0; }
-  10% { opacity: 1; }
-  100% { left: 72%; top: 84%; opacity: 0; }
-}
 
 @keyframes divider-drift {
   0%,
@@ -1677,7 +1583,6 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .portrait-orbit,
   .constellation-lines path,
-  .particle,
   .scene-divider {
     animation: none;
   }
@@ -1820,11 +1725,6 @@ body {
   .writing-card-v2 {
     flex-direction: column;
     align-items: flex-start;
-  }
-
-  .diagram-legend {
-    position: static;
-    margin: 0 0.8rem 0.4rem;
   }
 
   .diagram-detail {
