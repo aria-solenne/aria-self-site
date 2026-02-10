@@ -250,7 +250,14 @@ body {
   overflow: hidden;
 }
 
-.diagram-lines {
+.constellation-shell {
+  background:
+    radial-gradient(130% 90% at 10% 10%, rgba(99, 226, 210, 0.13), transparent 55%),
+    radial-gradient(120% 80% at 92% 18%, rgba(238, 195, 116, 0.13), transparent 56%),
+    linear-gradient(165deg, rgba(255, 251, 245, 0.92), rgba(248, 241, 231, 0.76));
+}
+
+.constellation-lines {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -258,67 +265,70 @@ body {
   z-index: 0;
 }
 
-.diagram-lines path {
+.constellation-lines path {
   fill: none;
-  stroke: rgba(99, 226, 210, 0.55);
-  stroke-width: 0.65;
-  stroke-dasharray: 2.6 2;
-  animation: diagram-flow 14s linear infinite;
+  stroke: url(#flowGradient);
+  stroke-width: 0.72;
+  stroke-linecap: round;
+  stroke-dasharray: 3.2 2.2;
+  animation: diagram-flow 15s linear infinite;
+  opacity: 0.9;
 }
 
-.diagram-lines path:nth-child(2n) {
+.constellation-lines path:nth-child(odd) {
   animation-duration: 11s;
 }
 
-.diagram-lines path:nth-child(3n) {
-  animation-duration: 9s;
-}
-
-.diagram-nodes {
+.constellation-nodes {
   position: relative;
   z-index: 1;
-  min-height: 290px;
+  min-height: 320px;
 }
 
-.node {
+.constellation-node {
   position: absolute;
+  transform: translate(-50%, -50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
   border-radius: 999px;
-  border: 1px solid var(--line);
-  background: rgba(255, 250, 242, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  background: rgba(255, 251, 245, 0.88);
   color: #433445;
   font-family: var(--font-body), serif;
-  font-size: 0.85rem;
-  padding: 0.44rem 0.74rem;
+  font-size: 0.82rem;
+  padding: 0.42rem 0.72rem 0.42rem 0.5rem;
   cursor: pointer;
-  transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease;
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
 }
 
-.node:hover,
-.node.active {
-  transform: translateY(-1px) scale(1.02);
-  border-color: rgba(99, 226, 210, 0.68);
-  box-shadow: 0 8px 18px rgba(84, 68, 88, 0.14);
+.node-icon-wrap {
+  width: 1.45rem;
+  height: 1.45rem;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.86);
+  border: 1px solid rgba(255, 255, 255, 0.82);
 }
 
-.node-inbox {
-  top: 12%;
-  left: 8%;
+.constellation-node.tone-aqua .node-icon-wrap {
+  color: #2f7f74;
 }
-.node-memory {
-  top: 30%;
-  left: 42%;
+
+.constellation-node.tone-gold .node-icon-wrap {
+  color: #8a6630;
 }
-.node-engine {
-  top: 49%;
-  left: 69%;
+
+.constellation-node.tone-lav .node-icon-wrap {
+  color: #655280;
 }
-.node-ops {
-  top: 64%;
-  left: 16%;
-}
-.node-delivery {
-  top: 80%;
-  left: 64%;
+
+.constellation-node:hover,
+.constellation-node.active {
+  transform: translate(-50%, -50%) translateY(-2px) scale(1.02);
+  border-color: rgba(99, 226, 210, 0.72);
+  box-shadow: 0 10px 22px rgba(84, 68, 88, 0.16);
 }
 
 .diagram-detail {
@@ -1347,7 +1357,7 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .portrait-orbit,
-  .diagram-lines path,
+  .constellation-lines path,
   .scene-divider {
     animation: none;
   }
@@ -1446,21 +1456,28 @@ body {
     font-size: 0.82rem;
   }
 
-  .diagram-lines {
+  .constellation-lines {
     display: none;
   }
 
-  .diagram-nodes {
+  .constellation-nodes {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 0.5rem;
     padding: 0.8rem;
     min-height: auto;
   }
 
-  .node {
+  .constellation-node {
     position: static;
+    transform: none;
+    justify-content: flex-start;
     text-align: left;
+  }
+
+  .constellation-node:hover,
+  .constellation-node.active {
+    transform: translateY(-1px);
   }
 
   .diagram-detail {

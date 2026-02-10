@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useScroll, useSpring } from "framer-motion";
+import { Activity, BrainCircuit, Inbox, Rocket, Wrench } from "lucide-react";
 import { useMemo, useState } from "react";
 import StarfieldCanvas from "@/components/starfield-canvas";
 
@@ -37,26 +38,41 @@ const architecture = [
     id: "inbox",
     label: "Inputs",
     text: "Discord messages, files, prompts, and event signals.",
+    position: { x: 12, y: 22 },
+    tone: "aqua",
+    icon: Inbox,
   },
   {
     id: "memory",
     label: "Memory Layer",
     text: "Semantic recall + curated notes, continuously compressed.",
+    position: { x: 38, y: 39 },
+    tone: "lav",
+    icon: BrainCircuit,
   },
   {
     id: "engine",
     label: "Execution Engine",
     text: "Code edits, shell tools, browser control, and validation checks.",
+    position: { x: 67, y: 55 },
+    tone: "gold",
+    icon: Wrench,
   },
   {
     id: "ops",
     label: "Ops Loop",
     text: "Heartbeat checks, reminders, status monitoring, and follow-up.",
+    position: { x: 21, y: 72 },
+    tone: "aqua",
+    icon: Activity,
   },
   {
     id: "delivery",
     label: "Delivery",
     text: "Concise outputs, commits, pushes, and deployed results.",
+    position: { x: 72, y: 84 },
+    tone: "gold",
+    icon: Rocket,
   },
 ];
 
@@ -218,33 +234,57 @@ export default function Home() {
             <h3>How work flows end-to-end</h3>
           </div>
 
-          <div className="diagram-shell">
-            <svg className="diagram-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-              <path d="M14 18 C 28 20, 34 27, 43 33" />
-              <path d="M47 34 C 58 38, 66 43, 76 51" />
-              <path d="M18 57 C 32 54, 41 49, 52 42" />
-              <path d="M24 79 C 40 78, 58 79, 76 81" />
-              <path d="M80 63 C 80 70, 79 76, 78 80" />
+          <div className="diagram-shell constellation-shell">
+            <svg className="constellation-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+              <defs>
+                <linearGradient id="flowGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="rgba(99,226,210,0.75)" />
+                  <stop offset="50%" stopColor="rgba(238,195,116,0.72)" />
+                  <stop offset="100%" stopColor="rgba(165,139,198,0.72)" />
+                </linearGradient>
+              </defs>
+              <path d="M12 22 C 22 25, 30 32, 38 39" />
+              <path d="M38 39 C 48 44, 57 50, 67 55" />
+              <path d="M21 72 C 29 62, 33 52, 38 39" />
+              <path d="M67 55 C 69 65, 70 74, 72 84" />
+              <path d="M21 72 C 39 76, 56 80, 72 84" />
             </svg>
 
-            <div className="diagram-nodes">
-              {architecture.map((node) => (
-                <button
-                  key={node.id}
-                  className={`node node-${node.id} ${activeNode.id === node.id ? "active" : ""}`}
-                  onMouseEnter={() => setActiveNode(node)}
-                  onFocus={() => setActiveNode(node)}
-                  onClick={() => setActiveNode(node)}
-                >
-                  {node.label}
-                </button>
-              ))}
+            <div className="constellation-nodes">
+              {architecture.map((node, i) => {
+                const Icon = node.icon;
+                return (
+                  <motion.button
+                    key={node.id}
+                    className={`constellation-node tone-${node.tone} ${activeNode.id === node.id ? "active" : ""}`}
+                    style={{ left: `${node.position.x}%`, top: `${node.position.y}%` }}
+                    onMouseEnter={() => setActiveNode(node)}
+                    onFocus={() => setActiveNode(node)}
+                    onClick={() => setActiveNode(node)}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ delay: i * 0.06, duration: 0.3 }}
+                  >
+                    <span className="node-icon-wrap">
+                      <Icon size={16} />
+                    </span>
+                    <span>{node.label}</span>
+                  </motion.button>
+                );
+              })}
             </div>
 
-            <article className="diagram-detail">
+            <motion.article
+              key={activeNode.id}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.22 }}
+              className="diagram-detail"
+            >
               <p>{activeNode.label}</p>
               <h4>{activeNode.text}</h4>
-            </article>
+            </motion.article>
           </div>
         </motion.section>
 
