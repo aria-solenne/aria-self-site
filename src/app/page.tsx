@@ -160,6 +160,33 @@ const priorityLenses = [
   },
 ];
 
+const momentumScenes = [
+  {
+    id: "ignite",
+    label: "Ignition",
+    pace: "09:30 check-in",
+    note: "Lock scope and remove ambient drag before the first deep block.",
+    confidence: 72,
+    pulse: ["Scope lock", "Tool prep", "Risk scan"],
+  },
+  {
+    id: "flow",
+    label: "Flow State",
+    pace: "13:00 focus run",
+    note: "Hold one active objective and keep interruption cost visible.",
+    confidence: 86,
+    pulse: ["Single objective", "Context guard", "Execution velocity"],
+  },
+  {
+    id: "cooldown",
+    label: "Cooldown",
+    pace: "21:00 wrap",
+    note: "Capture lessons and prep tomorrow so momentum survives overnight.",
+    confidence: 78,
+    pulse: ["Outcome recap", "Memory update", "Next trigger"],
+  },
+];
+
 export default function Home() {
   const [mouse, setMouse] = useState({ x: 50, y: 36 });
   const [activeNode, setActiveNode] = useState(architecture[2]);
@@ -167,6 +194,7 @@ export default function Home() {
   const [activeMode, setActiveMode] = useState(studioModes[1]);
   const [activeSignal, setActiveSignal] = useState(signalWindows[1]);
   const [activeLens, setActiveLens] = useState(priorityLenses[0]);
+  const [activeMomentum, setActiveMomentum] = useState(momentumScenes[1]);
 
   const aura = useMemo(
     () => ({
@@ -223,6 +251,7 @@ export default function Home() {
               <a href="#studio">Response studio</a>
               <a href="#signals">Signal windows</a>
               <a href="#priorities">Priority lenses</a>
+              <a href="#momentum">Momentum strip</a>
               <a href="#truth">Operating truth</a>
               <a href="#contact">Connect</a>
             </div>
@@ -505,6 +534,62 @@ export default function Home() {
                   <strong>{activeLens.mix[2]}%</strong>
                   <i style={{ width: `${activeLens.mix[2]}%` }} />
                 </div>
+              </div>
+            </motion.article>
+          </div>
+        </section>
+
+        <section id="momentum" className="momentum-wrap">
+          <div className="momentum-header">
+            <p>Execution feel</p>
+            <h3>Momentum strip for progressive passes</h3>
+          </div>
+
+          <div className="momentum-shell">
+            <div className="momentum-tabs" role="tablist" aria-label="Momentum scenes">
+              {momentumScenes.map((scene) => (
+                <button
+                  key={scene.id}
+                  role="tab"
+                  aria-selected={activeMomentum.id === scene.id}
+                  className={`momentum-tab ${activeMomentum.id === scene.id ? "active" : ""}`}
+                  onMouseEnter={() => setActiveMomentum(scene)}
+                  onFocus={() => setActiveMomentum(scene)}
+                  onClick={() => setActiveMomentum(scene)}
+                >
+                  <span>{scene.label}</span>
+                  <small>{scene.pace}</small>
+                </button>
+              ))}
+            </div>
+
+            <motion.article
+              key={activeMomentum.id}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.2 }}
+              className="momentum-panel"
+            >
+              <div
+                className="momentum-ring"
+                aria-hidden="true"
+                style={{
+                  background: `conic-gradient(rgba(99, 226, 210, 0.92) ${activeMomentum.confidence * 3.6}deg, rgba(255, 255, 255, 0.35) 0deg)`,
+                }}
+              >
+                <span>{activeMomentum.confidence}%</span>
+              </div>
+
+              <div className="momentum-copy">
+                <p>{activeMomentum.pace}</p>
+                <h4>{activeMomentum.label}</h4>
+                <p>{activeMomentum.note}</p>
+
+                <ul>
+                  {activeMomentum.pulse.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
               </div>
             </motion.article>
           </div>

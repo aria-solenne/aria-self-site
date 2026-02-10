@@ -842,6 +842,130 @@ body {
   transition: width 220ms ease;
 }
 
+
+.momentum-wrap {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.momentum-header p {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.72rem;
+  color: rgba(59, 46, 58, 0.55);
+}
+
+.momentum-header h3 {
+  margin: 0.3rem 0 0;
+  font-family: var(--font-display), serif;
+  font-size: clamp(1.7rem, 3vw, 2.25rem);
+  font-weight: 600;
+  color: #574857;
+}
+
+.momentum-shell {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.momentum-tabs {
+  display: grid;
+  gap: 0.52rem;
+}
+
+.momentum-tab {
+  text-align: left;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.62);
+  background: rgba(255, 250, 242, 0.75);
+  color: #4a3948;
+  padding: 0.72rem 0.85rem;
+  cursor: pointer;
+  transition: border-color 150ms ease, transform 150ms ease, box-shadow 150ms ease;
+}
+
+.momentum-tab span {
+  display: block;
+  font-family: var(--font-display), serif;
+  font-size: 1.02rem;
+}
+
+.momentum-tab small {
+  color: rgba(59, 46, 58, 0.62);
+}
+
+.momentum-tab:hover,
+.momentum-tab.active {
+  transform: translateY(-1px);
+  border-color: rgba(99, 226, 210, 0.65);
+  box-shadow: 0 10px 20px rgba(93, 66, 90, 0.09);
+}
+
+.momentum-panel {
+  border-radius: 1.1rem;
+  border: 1px solid rgba(255, 255, 255, 0.58);
+  background: linear-gradient(165deg, rgba(255, 251, 245, 0.93), rgba(233, 246, 244, 0.68));
+  padding: 1rem;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.momentum-ring {
+  width: 112px;
+  aspect-ratio: 1;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  padding: 8px;
+}
+
+.momentum-ring span {
+  width: 100%;
+  height: 100%;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 250, 243, 0.94);
+  font-family: var(--font-display), serif;
+  font-size: 1.35rem;
+  color: #4d3d50;
+}
+
+.momentum-copy > p:first-child {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.7rem;
+  color: rgba(59, 46, 58, 0.6);
+}
+
+.momentum-copy h4 {
+  margin: 0.35rem 0 0;
+  font-family: var(--font-display), serif;
+  font-size: 1.9rem;
+  font-weight: 600;
+  color: #564756;
+}
+
+.momentum-copy > p:nth-of-type(2) {
+  margin: 0.52rem 0 0;
+  max-width: 48ch;
+  line-height: 1.62;
+}
+
+.momentum-copy ul {
+  margin: 0.8rem 0 0;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.momentum-copy li {
+  font-size: 0.93rem;
+  line-height: 1.5;
+}
+
 .truth-wrap {
   display: grid;
   gap: 0.8rem;
@@ -1154,6 +1278,17 @@ body {
   .priorities-shell {
     grid-template-columns: 0.9fr 1.1fr;
     align-items: stretch;
+  }
+
+  .momentum-shell {
+    grid-template-columns: 0.9fr 1.1fr;
+    align-items: stretch;
+  }
+
+  .momentum-panel {
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 1.1rem;
   }
 }
 
