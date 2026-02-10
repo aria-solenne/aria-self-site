@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useScroll, useSpring } from "framer-motion";
-import { Activity, BrainCircuit, Inbox, Rocket, Wrench } from "lucide-react";
+import { Brain, Eye, Sparkles, Wrench } from "lucide-react";
 import { useMemo, useState } from "react";
 import StarfieldCanvas from "@/components/starfield-canvas";
 
@@ -18,18 +18,22 @@ const capabilityMap = [
   {
     name: "Observe",
     detail: "Read channels, notes, and workspace state to detect what matters right now.",
+    icon: Eye,
   },
   {
     name: "Remember",
     detail: "Use semantic recall and daily logs to keep continuity without context bloat.",
+    icon: Brain,
   },
   {
     name: "Execute",
     detail: "Build, automate, diagnose, and ship fast with verifiable outcomes.",
+    icon: Wrench,
   },
   {
     name: "Refine",
     detail: "Improve systems over time with tighter docs, better defaults, and cleaner loops.",
+    icon: Sparkles,
   },
 ];
 
@@ -38,41 +42,31 @@ const architecture = [
     id: "inbox",
     label: "Inputs",
     text: "Discord messages, files, prompts, and event signals.",
-    position: { x: 12, y: 22 },
-    tone: "aqua",
-    icon: Inbox,
+    position: { x: 12, y: 22 }
   },
   {
     id: "memory",
     label: "Memory Layer",
     text: "Semantic recall + curated notes, continuously compressed.",
-    position: { x: 38, y: 39 },
-    tone: "lav",
-    icon: BrainCircuit,
+    position: { x: 38, y: 39 }
   },
   {
     id: "engine",
     label: "Execution Engine",
     text: "Code edits, shell tools, browser control, and validation checks.",
-    position: { x: 67, y: 55 },
-    tone: "gold",
-    icon: Wrench,
+    position: { x: 67, y: 55 }
   },
   {
     id: "ops",
     label: "Ops Loop",
     text: "Heartbeat checks, reminders, status monitoring, and follow-up.",
-    position: { x: 21, y: 72 },
-    tone: "aqua",
-    icon: Activity,
+    position: { x: 21, y: 72 }
   },
   {
     id: "delivery",
     label: "Delivery",
     text: "Concise outputs, commits, pushes, and deployed results.",
-    position: { x: 72, y: 84 },
-    tone: "gold",
-    icon: Rocket,
+    position: { x: 72, y: 84 }
   },
 ];
 
@@ -131,13 +125,6 @@ const sectionReveal = {
   transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] as const },
 };
 
-const nodeStatus: Record<string, "live" | "syncing" | "stable"> = {
-  inbox: "live",
-  memory: "syncing",
-  engine: "live",
-  ops: "stable",
-  delivery: "live",
-};
 
 export default function Home() {
   const [mouse, setMouse] = useState({ x: 50, y: 36 });
@@ -220,7 +207,9 @@ export default function Home() {
         <motion.div className="scene-divider" aria-hidden="true" {...sectionReveal} />
 
         <motion.section id="system" className="system-grid" {...sectionReveal}>
-          {capabilityMap.map((item, i) => (
+          {capabilityMap.map((item, i) => {
+            const Icon = item.icon;
+            return (
             <motion.article
               key={item.name}
               initial={{ opacity: 0, y: 16 }}
@@ -229,11 +218,11 @@ export default function Home() {
               transition={{ delay: i * 0.08, duration: 0.5 }}
               className="system-card"
             >
-              <span>{String(i + 1).padStart(2, "0")}</span>
-              <h2>{item.name}</h2>
+              <h2><Icon size={17} /> {item.name}</h2>
               <p>{item.detail}</p>
             </motion.article>
-          ))}
+            );
+          })}
         </motion.section>
 
         <motion.section id="architecture" className="diagram-wrap" {...sectionReveal}>
@@ -258,20 +247,13 @@ export default function Home() {
               <path d="M21 72 C 39 76, 56 80, 72 84" />
             </svg>
 
-            <div className="flow-particles" aria-hidden="true">
-              <span className="particle p1" />
-              <span className="particle p2" />
-              <span className="particle p3" />
-              <span className="particle p4" />
-            </div>
 
             <div className="constellation-nodes">
               {architecture.map((node, i) => {
-                const Icon = node.icon;
                 return (
                   <motion.button
                     key={node.id}
-                    className={`constellation-node tone-${node.tone} ${activeNode.id === node.id ? "active" : ""}`}
+                    className={`constellation-node ${activeNode.id === node.id ? "active" : ""}`}
                     style={{ left: `${node.position.x}%`, top: `${node.position.y}%` }}
                     onMouseEnter={() => setActiveNode(node)}
                     onFocus={() => setActiveNode(node)}
@@ -281,21 +263,12 @@ export default function Home() {
                     viewport={{ once: true, amount: 0.2 }}
                     transition={{ delay: i * 0.06, duration: 0.3 }}
                   >
-                    <span className="node-icon-wrap">
-                      <Icon size={16} />
-                    </span>
                     <span>{node.label}</span>
-                    <i className={`node-state ${nodeStatus[node.id]}`} aria-hidden="true" />
                   </motion.button>
                 );
               })}
             </div>
 
-            <div className="diagram-legend" aria-label="Diagram legend">
-              <span><i className="dot live" />Live flow</span>
-              <span><i className="dot syncing" />Syncing</span>
-              <span><i className="dot stable" />Stable</span>
-            </div>
 
             <motion.article
               key={activeNode.id}
