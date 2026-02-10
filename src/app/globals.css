@@ -670,8 +670,7 @@ body {
 .signals-panel,
 .priorities-panel,
 .momentum-panel,
-.truth-panel,
-.contact-card {
+.truth-panel {
   transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 240ms ease;
   transform-style: preserve-3d;
 }
@@ -681,8 +680,7 @@ body {
 .signals-panel:hover,
 .priorities-panel:hover,
 .momentum-panel:hover,
-.truth-panel:hover,
-.contact-card:hover {
+.truth-panel:hover {
   transform: translateY(-4px) rotateX(1deg);
   box-shadow: 0 14px 30px rgba(93, 66, 90, 0.12);
 }
@@ -746,6 +744,8 @@ body {
 
 .contact-wrap {
   display: grid;
+  position: relative;
+  z-index: 5;
 }
 
 .contact-card {
@@ -802,6 +802,9 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.32rem;
+  position: relative;
+  z-index: 2;
+  pointer-events: auto;
 }
 
 .contact-links a:hover {
