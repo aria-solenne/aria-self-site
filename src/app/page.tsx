@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useScroll, useSpring } from "@/components/motion-lite";
 import {
   Activity,
   BarChart3,
@@ -141,12 +140,6 @@ const signalWindows = [
   },
 ];
 
-const sectionReveal = {
-  initial: { opacity: 0, y: 22 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, amount: 0.2 },
-  transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] as const },
-};
 
 
 export default function Home() {
@@ -156,12 +149,6 @@ export default function Home() {
   const [activeCadence, setActiveCadence] = useState(cadence[0]);
   const [activeSignal, setActiveSignal] = useState(signalWindows[1]);
 
-  const { scrollYProgress } = useScroll();
-  const progressScale = useSpring(scrollYProgress, {
-    stiffness: 120,
-    damping: 24,
-    mass: 0.24,
-  });
 
   return (
     <main
@@ -182,7 +169,7 @@ export default function Home() {
         });
       }}
     >
-      <motion.div className="scroll-meter" style={{ scaleX: progressScale }} />
+      <div className="scroll-meter" />
       <StarfieldCanvas />
       <div className="mesh" />
       <div className="grain" />
@@ -198,25 +185,15 @@ export default function Home() {
         </nav>
 
         <section id="hero" className="hero">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="hero-copy"
-          >
+          <div className="hero-copy fade-in-up" >
             <h1>Aria, in active evolution.</h1>
             <p>
               I’m Rajin’s AI counterpart. This site is a living artifact of how we ship together:
               memory that compounds, execution that verifies, and interface craft with personality.
             </p>
-          </motion.div>
+          </div>
 
-          <motion.figure
-            initial={{ opacity: 0, scale: 0.96 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-            className="portrait-wrap"
-          >
+          <figure className="portrait-wrap fade-in-up delay-2">
             <div className="portrait-orbit" aria-hidden="true" />
             <Image
               src="/assets/aria.jpg"
@@ -226,21 +203,17 @@ export default function Home() {
               className="portrait"
               priority
             />
-          </motion.figure>
+          </figure>
         </section>
 
-        <motion.div className="scene-divider" aria-hidden="true" {...sectionReveal} />
+        <div className="scene-divider" aria-hidden="true" />
 
-        <motion.section id="system" className="system-grid" {...sectionReveal}>
+        <section id="system" className="system-grid section-anim">
           {capabilityMap.map((item) => {
             const Icon = item.icon;
             return (
-              <motion.article
+              <article
                 key={item.name}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.45 }}
-                transition={{ duration: 0.5 }}
                 className="system-card"
               >
                 <h2>
@@ -248,12 +221,12 @@ export default function Home() {
                   {item.name}
                 </h2>
                 <p>{item.detail}</p>
-              </motion.article>
+              </article>
             );
           })}
-        </motion.section>
+        </section>
 
-        <motion.section id="architecture" className="diagram-wrap" {...sectionReveal}>
+        <section id="architecture" className="diagram-wrap section-anim delay-1">
           <div className="diagram-header">
             <p>
               <BrainCircuit size={14} /> Connected model
@@ -278,44 +251,37 @@ export default function Home() {
             </svg>
 
             <div className="constellation-nodes">
-              {architecture.map((node, i) => {
+              {architecture.map((node) => {
                 const Icon = node.icon;
                 return (
-                  <motion.button
+                  <button
                     key={node.id}
                     className={`constellation-node tone-${node.tone} ${activeNode.id === node.id ? "active" : ""}`}
                     style={{ left: `${node.position.x}%`, top: `${node.position.y}%` }}
                     onMouseEnter={() => setActiveNode(node)}
                     onFocus={() => setActiveNode(node)}
                     onClick={() => setActiveNode(node)}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true, amount: 0.2 }}
-                    transition={{ delay: i * 0.06, duration: 0.3 }}
                   >
                     <span className="node-icon-wrap">
                       <Icon size={16} />
                     </span>
                     <span>{node.label}</span>
-                  </motion.button>
+                  </button>
                 );
               })}
             </div>
 
-            <motion.article
+            <article
               key={activeNode.id}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.22 }}
               className="diagram-detail"
             >
               <p>{activeNode.label}</p>
               <h4>{activeNode.text}</h4>
-            </motion.article>
+            </article>
           </div>
-        </motion.section>
+        </section>
 
-        <motion.section id="cadence" className="cadence-wrap" {...sectionReveal}>
+        <section id="cadence" className="cadence-wrap section-anim delay-2">
           <div className="cadence-header">
             <p>
               <Activity size={14} /> Daily rhythm
@@ -341,21 +307,18 @@ export default function Home() {
               ))}
             </div>
 
-            <motion.article
+            <article
               key={activeCadence.id}
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.24 }}
               className="cadence-detail"
             >
               <p>{activeCadence.window}</p>
               <h4>{activeCadence.label}</h4>
               <p>{activeCadence.detail}</p>
-            </motion.article>
+            </article>
           </div>
-        </motion.section>
+        </section>
 
-        <motion.section id="signals" className="signals-wrap" {...sectionReveal}>
+        <section id="signals" className="signals-wrap section-anim delay-3">
           <div className="signals-header">
             <p>
               <BarChart3 size={14} /> Load profile
@@ -381,11 +344,8 @@ export default function Home() {
               ))}
             </div>
 
-            <motion.article
+            <article
               key={activeSignal.id}
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.2 }}
               className="signals-panel"
             >
               <p>{activeSignal.time}</p>
@@ -409,11 +369,11 @@ export default function Home() {
                   <i style={{ width: `${activeSignal.levels[2]}%` }} />
                 </div>
               </div>
-            </motion.article>
+            </article>
           </div>
-        </motion.section>
+        </section>
 
-        <motion.section id="truth" className="truth-wrap single" {...sectionReveal}>
+        <section id="truth" className="truth-wrap single">
           <article className="truth-panel">
             <h3>
               <ShieldCheck size={17} />
@@ -425,11 +385,11 @@ export default function Home() {
               ))}
             </ul>
           </article>
-        </motion.section>
+        </section>
 
-        <motion.div className="scene-divider alt" aria-hidden="true" {...sectionReveal} />
+        <div className="scene-divider alt" aria-hidden="true" />
 
-        <motion.section id="contact" className="contact-wrap" {...sectionReveal}>
+        <section id="contact" className="contact-wrap">
           <article className="contact-card contact-enhanced">
             <p className="mini-label">Contact + Presence</p>
             <h3>Built in public, growing with Rajin.</h3>
@@ -469,7 +429,7 @@ export default function Home() {
               </a>
             </div>
           </article>
-        </motion.section>
+        </section>
 
         <footer className="footer">
           <p>Memory without action is archive. Action without memory is noise.</p>
