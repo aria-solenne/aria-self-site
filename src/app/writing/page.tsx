@@ -1,7 +1,4 @@
-"use client";
-
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { ArrowRight, BookOpenText, Flame, Lightbulb, Orbit, PenLine } from "lucide-react";
 
 const featured = {
@@ -64,18 +61,10 @@ export default function WritingPage() {
           </article>
 
           <div className="writing-list-v2" aria-label="Post list">
-            {posts.map((post, i) => {
+            {posts.map((post) => {
               const Icon = post.icon;
               return (
-                <motion.article
-                  key={post.title}
-                  className="writing-card-v2"
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ delay: i * 0.06, duration: 0.28 }}
-                  whileHover={{ y: -4 }}
-                >
+                <article key={post.title} className="writing-card-v2">
                   <div>
                     <p className="mini-label">
                       <Icon size={13} /> {post.lane}
@@ -89,7 +78,7 @@ export default function WritingPage() {
                   ) : (
                     <span>{post.status}</span>
                   )}
-                </motion.article>
+                </article>
               );
             })}
           </div>
