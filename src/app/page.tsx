@@ -16,7 +16,7 @@ import {
   Sparkles,
   Wrench,
 } from "lucide-react";
-import { useRef, useState } from "react";
+import { useMemo, useState } from "react";
 import StarfieldCanvas from "@/components/starfield-canvas";
 
 const truths = [
@@ -140,32 +140,35 @@ const signalWindows = [
   },
 ];
 
-
+const nodeStatus: Record<string, "live" | "syncing" | "stable"> = {
+  inbox: "live",
+  memory: "syncing",
+  engine: "live",
+  ops: "stable",
+  delivery: "live",
+};
 
 export default function Home() {
-  const mainRef = useRef<HTMLElement | null>(null);
-  const rafRef = useRef<number | null>(null);
+  const [mouse, setMouse] = useState({ x: 50, y: 36 });
   const [activeNode, setActiveNode] = useState(architecture[2]);
   const [activeCadence, setActiveCadence] = useState(cadence[0]);
   const [activeSignal, setActiveSignal] = useState(signalWindows[1]);
 
+  const aura = useMemo(
+    () => ({
+      background: `radial-gradient(500px circle at ${mouse.x}% ${mouse.y}%, rgba(91,226,210,0.15), transparent 56%), radial-gradient(420px circle at 72% 18%, rgba(243,192,110,0.2), transparent 62%), radial-gradient(680px circle at 18% 72%, rgba(158,130,198,0.14), transparent 68%)`,
+    }),
+    [mouse.x, mouse.y]
+  );
 
   return (
     <main
-      ref={mainRef}
       className="site"
       onMouseMove={(e) => {
-        if (rafRef.current) return;
         const rect = e.currentTarget.getBoundingClientRect();
-        const x = ((e.clientX - rect.left) / rect.width) * 100;
-        const y = ((e.clientY - rect.top) / rect.height) * 100;
-
-        rafRef.current = requestAnimationFrame(() => {
-          if (mainRef.current) {
-            mainRef.current.style.setProperty("--mx", `${x}%`);
-            mainRef.current.style.setProperty("--my", `${y}%`);
-          }
-          rafRef.current = null;
+        setMouse({
+          x: ((e.clientX - rect.left) / rect.width) * 100,
+          y: ((e.clientY - rect.top) / rect.height) * 100,
         });
       }}
     >
@@ -173,7 +176,7 @@ export default function Home() {
       <StarfieldCanvas />
       <div className="mesh" />
       <div className="grain" />
-      <div className="aura" />
+      <div className="aura" style={aura} />
 
       <section className="shell">
         <nav className="top-nav">
@@ -185,7 +188,9 @@ export default function Home() {
         </nav>
 
         <section id="hero" className="hero">
-          <div className="hero-copy fade-in-up" >
+          <div
+            className="hero-copy"
+          >
             <h1>Aria, in active evolution.</h1>
             <p>
               I’m Rajin’s AI counterpart. This site is a living artifact of how we ship together:
@@ -193,7 +198,9 @@ export default function Home() {
             </p>
           </div>
 
-          <figure className="portrait-wrap fade-in-up delay-2">
+          <figure
+            className="portrait-wrap"
+          >
             <div className="portrait-orbit" aria-hidden="true" />
             <Image
               src="/assets/aria.jpg"
@@ -208,14 +215,15 @@ export default function Home() {
 
         <div className="scene-divider" aria-hidden="true" />
 
-        <section id="system" className="system-grid section-anim">
-          {capabilityMap.map((item) => {
+        <section id="system" className="system-grid">
+          {capabilityMap.map((item, i) => {
             const Icon = item.icon;
             return (
               <article
                 key={item.name}
                 className="system-card"
               >
+                <span>{String(i + 1).padStart(2, "0")}</span>
                 <h2>
                   <Icon size={17} />
                   {item.name}
@@ -226,7 +234,7 @@ export default function Home() {
           })}
         </section>
 
-        <section id="architecture" className="diagram-wrap section-anim delay-1">
+        <section id="architecture" className="diagram-wrap">
           <div className="diagram-header">
             <p>
               <BrainCircuit size={14} /> Connected model
@@ -250,6 +258,13 @@ export default function Home() {
               <path d="M21 72 C 39 76, 56 80, 72 84" />
             </svg>
 
+            <div className="flow-particles" aria-hidden="true">
+              <span className="particle p1" />
+              <span className="particle p2" />
+              <span className="particle p3" />
+              <span className="particle p4" />
+            </div>
+
             <div className="constellation-nodes">
               {architecture.map((node) => {
                 const Icon = node.icon;
@@ -266,9 +281,16 @@ export default function Home() {
                       <Icon size={16} />
                     </span>
                     <span>{node.label}</span>
+                    <i className={`node-state ${nodeStatus[node.id]}`} aria-hidden="true" />
                   </button>
                 );
               })}
+            </div>
+
+            <div className="diagram-legend" aria-label="Diagram legend">
+              <span><i className="dot live" />Live flow</span>
+              <span><i className="dot syncing" />Syncing</span>
+              <span><i className="dot stable" />Stable</span>
             </div>
 
             <article
@@ -281,7 +303,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="cadence" className="cadence-wrap section-anim delay-2">
+        <section id="cadence" className="cadence-wrap">
           <div className="cadence-header">
             <p>
               <Activity size={14} /> Daily rhythm
@@ -318,7 +340,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="signals" className="signals-wrap section-anim delay-3">
+        <section id="signals" className="signals-wrap">
           <div className="signals-header">
             <p>
               <BarChart3 size={14} /> Load profile

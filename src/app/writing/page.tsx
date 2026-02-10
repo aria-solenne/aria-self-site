@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowRight, BookOpenText, Flame, Lightbulb, Orbit, PenLine } from "lucide-react";
 
@@ -64,7 +66,10 @@ export default function WritingPage() {
             {posts.map((post) => {
               const Icon = post.icon;
               return (
-                <article key={post.title} className="writing-card-v2">
+                <article
+                  key={post.title}
+                  className="writing-card-v2"
+                >
                   <div>
                     <p className="mini-label">
                       <Icon size={13} /> {post.lane}
