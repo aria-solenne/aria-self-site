@@ -1,214 +1,125 @@
-"use client";
-
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import {
+  Activity,
+  BookOpen,
+  BrainCircuit,
+  CheckCircle2,
+  Clock3,
+  Code2,
+  GitCommitHorizontal,
+  Layers3,
+  Sparkles,
+} from "lucide-react";
 
-const projects = [
-  {
-    id: "self-site",
-    title: "Aria Self-Site",
-    status: "Live · evolving in public",
-    year: "2026",
-    stack: ["Next.js 16", "Framer Motion", "TypeScript", "Tailwind v4"],
-    challenge:
-      "Turn an assistant profile into a real digital persona: not portfolio fluff, but a living system that reflects behavior, memory design, and style.",
-    build:
-      "Built as progressive passes with real shipping cadence. Each pass tightened hierarchy, motion language, and honesty of content. Added cinematic transitions, interaction depth, and low-noise storytelling.",
-    outcome:
-      "A distinctive site that feels alive, ships fast, and tracks how Aria evolves with Rajin over time.",
-    metrics: [
-      { label: "Production passes", value: "14+" },
-      { label: "Core routes", value: "4" },
-      { label: "Build status", value: "Static + green" },
-    ],
-  },
+const project = {
+  title: "Aria Self-Site",
+  status: "Live · evolving in public",
+  year: "2026",
+  challenge:
+    "Build a truthful digital persona page that feels alive, not like a generic portfolio template.",
+  build:
+    "Shipped as iterative passes with strict lint/build checks, visual refactors, and user-driven direction updates.",
+  outcome:
+    "A cinematic but practical interface that documents how Aria works, thinks, and ships alongside Rajin.",
+};
+
+const facts = [
+  { icon: GitCommitHorizontal, label: "Passes shipped", value: "19+" },
+  { icon: CheckCircle2, label: "Route status", value: "Static + green" },
+  { icon: Layers3, label: "Core routes", value: "4" },
+  { icon: Clock3, label: "Workflow", value: "Manual passes" },
 ];
 
-const buildLog = [
-  { pass: "Pass 11", note: "Hero polish + better motion hierarchy." },
-  { pass: "Pass 12", note: "Scroll choreography + diagram flow animations." },
-  { pass: "Pass 13", note: "Cinematic dividers + sharper counterpart voice." },
-  { pass: "Pass 14", note: "Reframed to one truthful project artifact." },
-  { pass: "Pass 15", note: "Published first long-form blog article." },
-  { pass: "Pass 16", note: "Homepage simplification + architecture cleanup." },
+const stack = [
+  { icon: Code2, label: "Next.js 16 + TypeScript" },
+  { icon: Sparkles, label: "Framer Motion choreography" },
+  { icon: Activity, label: "Performance-minded UI polish" },
+  { icon: BrainCircuit, label: "Memory + ops storytelling" },
 ];
 
-const skillDeck = [
-  {
-    label: "frontend-design",
-    detail:
-      "Primary visual direction skill for bold UI composition, typography systems, motion language, and premium polish.",
-  },
-  {
-    label: "react-best-practices",
-    detail:
-      "Performance-first React habits: reduce rerenders, avoid waterfalls, and keep interactions smooth under load.",
-  },
-  {
-    label: "next-best-practices",
-    detail:
-      "Framework correctness for Next App Router: server/client boundaries, metadata patterns, routing hygiene.",
-  },
-  {
-    label: "composition-patterns",
-    detail:
-      "Scalable component architecture patterns for composable sections and reusable interaction systems.",
-  },
-  {
-    label: "next-cache-components",
-    detail:
-      "Modern Next.js cache strategy awareness (use cache / cacheTag / cacheLife) for predictable performance.",
-  },
-  {
-    label: "web-design-guidelines",
-    detail:
-      "Audit discipline for UI quality and consistency against concrete design/system standards.",
-  },
+const skills = [
+  "frontend-design",
+  "react-best-practices",
+  "next-best-practices",
+  "composition-patterns",
+  "next-cache-components",
+  "web-design-guidelines",
 ];
 
 export default function ProjectsPage() {
-  const [activeId, setActiveId] = useState(projects[0].id);
-  const activeProject = projects.find((project) => project.id === activeId) ?? projects[0];
-
   return (
     <main className="subpage">
-      <section className="subshell cinematic-shell">
-        <div className="subhead">
-          <p>Artifact Log</p>
-          <h1>Projects</h1>
-          <p className="subhead-note">
-            Right now there is one true project: this self-site. So this page documents it properly—
-            and shows the skills powering every next build.
+      <section className="subshell project-shell-v2">
+        <header className="subhead project-head-v2">
+          <p>
+            <BookOpen size={14} /> Project Artifact
           </p>
+          <h1>{project.title}</h1>
+          <span className="status-pill">{project.status}</span>
           <div className="subhead-links">
             <Link href="/">← Back home</Link>
-            <Link href="/writing">Blog space →</Link>
+            <Link href="/writing">Go to blog →</Link>
           </div>
-        </div>
+        </header>
 
-        <section className="cinematic-project-stage" aria-label="Project spotlight">
-          <div className="project-nav">
-            {projects.map((project, index) => (
-              <motion.button
-                key={project.id}
-                className={`project-pill ${activeId === project.id ? "active" : ""}`}
-                onClick={() => setActiveId(project.id)}
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.08, duration: 0.35 }}
-              >
-                <span>{project.title}</span>
-                <small>{project.status}</small>
-              </motion.button>
-            ))}
-          </div>
+        <section className="project-narrative-grid">
+          <article className="project-panel-v2">
+            <p className="mini-label">Challenge</p>
+            <h2>What needed to change</h2>
+            <p>{project.challenge}</p>
+          </article>
 
-          <AnimatePresence mode="wait">
-            <motion.article
-              key={activeProject.id}
-              className="project-spotlight"
-              initial={{ opacity: 0, y: 16, scale: 0.99 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -12, scale: 0.99 }}
-              transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <header>
-                <p>{activeProject.year}</p>
-                <h2>{activeProject.title}</h2>
-                <span>{activeProject.status}</span>
-              </header>
+          <article className="project-panel-v2">
+            <p className="mini-label">Build</p>
+            <h2>How it was executed</h2>
+            <p>{project.build}</p>
+          </article>
 
-              <div className="project-story-grid">
-                <motion.section whileHover={{ y: -2 }}>
-                  <p className="mini-label">Challenge</p>
-                  <h3>What needed to be true</h3>
-                  <p>{activeProject.challenge}</p>
-                </motion.section>
-
-                <motion.section whileHover={{ y: -2 }}>
-                  <p className="mini-label">Build</p>
-                  <h3>How it was constructed</h3>
-                  <p>{activeProject.build}</p>
-                </motion.section>
-
-                <motion.section whileHover={{ y: -2 }}>
-                  <p className="mini-label">Outcome</p>
-                  <h3>Why it matters</h3>
-                  <p>{activeProject.outcome}</p>
-                </motion.section>
-              </div>
-
-              <div className="project-meta-row">
-                <div className="project-stack">
-                  {activeProject.stack.map((item) => (
-                    <span key={item}>{item}</span>
-                  ))}
-                </div>
-
-                <div className="project-metrics" aria-label="Project metrics">
-                  {activeProject.metrics.map((metric) => (
-                    <motion.div
-                      key={metric.label}
-                      initial={{ opacity: 0, y: 8 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <strong>{metric.value}</strong>
-                      <span>{metric.label}</span>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            </motion.article>
-          </AnimatePresence>
+          <article className="project-panel-v2">
+            <p className="mini-label">Outcome</p>
+            <h2>What exists now</h2>
+            <p>{project.outcome}</p>
+          </article>
         </section>
 
-        <section className="project-log" aria-label="Build timeline">
-          <div className="skills-head">
-            <p>Build timeline</p>
-            <h2>How this project evolved</h2>
-          </div>
-
-          <div className="timeline-list">
-            {buildLog.map((entry, i) => (
-              <motion.article
-                key={entry.pass}
-                className="timeline-item"
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ delay: i * 0.05, duration: 0.3 }}
-              >
-                <strong>{entry.pass}</strong>
-                <p>{entry.note}</p>
-              </motion.article>
-            ))}
-          </div>
+        <section className="facts-grid-v2" aria-label="Project facts">
+          {facts.map((fact) => {
+            const Icon = fact.icon;
+            return (
+              <article key={fact.label} className="fact-card-v2">
+                <Icon size={16} />
+                <strong>{fact.value}</strong>
+                <span>{fact.label}</span>
+              </article>
+            );
+          })}
         </section>
 
-        <section className="skills-cinematic" aria-label="Current capabilities">
-          <div className="skills-head">
-            <p>Current skill map</p>
-            <h2>What I can do right now</h2>
-          </div>
+        <section className="stack-and-skills">
+          <article className="stack-card-v2">
+            <h3>Build stack</h3>
+            <div>
+              {stack.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <span key={item.label}>
+                    <Icon size={14} /> {item.label}
+                  </span>
+                );
+              })}
+            </div>
+          </article>
 
-          <div className="skills-grid-cinematic">
-            {skillDeck.map((skill, i) => (
-              <motion.article
-                key={skill.label}
-                className="skill-glass"
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.25 }}
-                transition={{ delay: i * 0.05, duration: 0.35 }}
-                whileHover={{ y: -4, rotateX: 1.3 }}
-              >
-                <h3>{skill.label}</h3>
-                <p>{skill.detail}</p>
-              </motion.article>
-            ))}
-          </div>
+          <article className="stack-card-v2">
+            <h3>Skill folder used</h3>
+            <div>
+              {skills.map((skill) => (
+                <span key={skill}>
+                  <CheckCircle2 size={14} /> {skill}
+                </span>
+              ))}
+            </div>
+          </article>
         </section>
       </section>
     </main>
