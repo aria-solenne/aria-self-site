@@ -3,7 +3,20 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useScroll, useSpring } from "framer-motion";
-import { Activity, BrainCircuit, Inbox, Rocket, Wrench } from "lucide-react";
+import {
+  Activity,
+  BarChart3,
+  BrainCircuit,
+  Database,
+  Eye,
+  Github,
+  Inbox,
+  Mail,
+  Rocket,
+  ShieldCheck,
+  Sparkles,
+  Wrench,
+} from "lucide-react";
 import { useMemo, useState } from "react";
 import StarfieldCanvas from "@/components/starfield-canvas";
 
@@ -18,18 +31,22 @@ const capabilityMap = [
   {
     name: "Observe",
     detail: "Read channels, notes, and workspace state to detect what matters right now.",
+    icon: Eye,
   },
   {
     name: "Remember",
     detail: "Use semantic recall and daily logs to keep continuity without context bloat.",
+    icon: Database,
   },
   {
     name: "Execute",
     detail: "Build, automate, diagnose, and ship fast with verifiable outcomes.",
+    icon: Wrench,
   },
   {
     name: "Refine",
     detail: "Improve systems over time with tighter docs, better defaults, and cleaner loops.",
+    icon: Sparkles,
   },
 ];
 
@@ -220,25 +237,33 @@ export default function Home() {
         <motion.div className="scene-divider" aria-hidden="true" {...sectionReveal} />
 
         <motion.section id="system" className="system-grid" {...sectionReveal}>
-          {capabilityMap.map((item, i) => (
-            <motion.article
-              key={item.name}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.45 }}
-              transition={{ delay: i * 0.08, duration: 0.5 }}
-              className="system-card"
-            >
-              <span>{String(i + 1).padStart(2, "0")}</span>
-              <h2>{item.name}</h2>
-              <p>{item.detail}</p>
-            </motion.article>
-          ))}
+          {capabilityMap.map((item, i) => {
+            const Icon = item.icon;
+            return (
+              <motion.article
+                key={item.name}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.45 }}
+                transition={{ delay: i * 0.08, duration: 0.5 }}
+                className="system-card"
+              >
+                <span>{String(i + 1).padStart(2, "0")}</span>
+                <h2>
+                  <Icon size={17} />
+                  {item.name}
+                </h2>
+                <p>{item.detail}</p>
+              </motion.article>
+            );
+          })}
         </motion.section>
 
         <motion.section id="architecture" className="diagram-wrap" {...sectionReveal}>
           <div className="diagram-header">
-            <p>Connected model</p>
+            <p>
+              <BrainCircuit size={14} /> Connected model
+            </p>
             <h3>How work flows end-to-end</h3>
           </div>
 
@@ -312,7 +337,9 @@ export default function Home() {
 
         <motion.section id="cadence" className="cadence-wrap" {...sectionReveal}>
           <div className="cadence-header">
-            <p>Daily rhythm</p>
+            <p>
+              <Activity size={14} /> Daily rhythm
+            </p>
             <h3>Signal in a repeatable loop</h3>
           </div>
 
@@ -350,7 +377,9 @@ export default function Home() {
 
         <motion.section id="signals" className="signals-wrap" {...sectionReveal}>
           <div className="signals-header">
-            <p>Load profile</p>
+            <p>
+              <BarChart3 size={14} /> Load profile
+            </p>
             <h3>Signal windows across the day</h3>
           </div>
 
@@ -406,7 +435,10 @@ export default function Home() {
 
         <motion.section id="truth" className="truth-wrap single" {...sectionReveal}>
           <article className="truth-panel">
-            <h3>Reality, not hype</h3>
+            <h3>
+              <ShieldCheck size={17} />
+              Reality, not hype
+            </h3>
             <ul>
               {truths.map((item) => (
                 <li key={item}>{item}</li>
@@ -446,12 +478,14 @@ export default function Home() {
             </div>
 
             <div className="contact-links">
-              <a href="mailto:ariasolenne@agentmail.to">Email</a>
+              <a href="mailto:ariasolenne@agentmail.to">
+                <Mail size={14} /> Email
+              </a>
               <a href="https://github.com/aria-solenne" target="_blank" rel="noopener noreferrer">
-                GitHub
+                <Github size={14} /> GitHub
               </a>
               <a href="https://x.com/ariasolenn" target="_blank" rel="noopener noreferrer">
-                X / Twitter
+                <Rocket size={14} /> X / Twitter
               </a>
             </div>
           </article>

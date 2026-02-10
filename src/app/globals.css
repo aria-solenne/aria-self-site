@@ -212,6 +212,9 @@ body {
   font-family: var(--font-display), serif;
   font-size: 1.65rem;
   font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
 }
 
 .system-card p {
@@ -231,6 +234,9 @@ body {
   letter-spacing: 0.1em;
   font-size: 0.72rem;
   color: rgba(59, 46, 58, 0.55);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
 }
 
 .diagram-header h3 {
@@ -410,7 +416,7 @@ body {
 .diagram-detail {
   position: absolute;
   right: 1rem;
-  bottom: 1rem;
+  top: 1rem;
   z-index: 1;
   max-width: 310px;
   border-radius: 0.95rem;
@@ -445,6 +451,9 @@ body {
   letter-spacing: 0.1em;
   font-size: 0.72rem;
   color: rgba(59, 46, 58, 0.55);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
 }
 
 .cadence-header h3 {
@@ -533,6 +542,9 @@ body {
   letter-spacing: 0.1em;
   font-size: 0.72rem;
   color: rgba(59, 46, 58, 0.55);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
 }
 
 .signals-header h3 {
@@ -715,6 +727,9 @@ body {
   font-family: var(--font-display), serif;
   font-size: 1.5rem;
   font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.38rem;
 }
 
 .truth-panel ul {
@@ -784,6 +799,9 @@ body {
   font-size: 0.86rem;
   background: rgba(255, 250, 242, 0.82);
   transition: transform 130ms ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.32rem;
 }
 
 .contact-links a:hover {
@@ -908,7 +926,12 @@ body {
 
 .project-shell-v2,
 .writing-shell-v2 {
-  gap: 1rem;
+  gap: 1.45rem;
+}
+
+.project-shell-v2 > section,
+.writing-shell-v2 > section {
+  margin-top: 0.15rem;
 }
 
 .project-head-v2 p,
@@ -930,13 +953,13 @@ body {
 
 .project-narrative-grid {
   display: grid;
-  gap: 0.65rem;
+  gap: 0.9rem;
 }
 
 .project-panel-v2 {
   border: 1px solid rgba(255, 255, 255, 0.62);
   border-radius: 1rem;
-  padding: 0.9rem;
+  padding: 1.05rem;
   background: linear-gradient(155deg, rgba(255, 250, 242, 0.86), rgba(239, 247, 255, 0.62));
 }
 
@@ -953,16 +976,16 @@ body {
 .facts-grid-v2 {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.55rem;
+  gap: 0.75rem;
 }
 
 .fact-card-v2 {
   border: 1px solid rgba(255, 255, 255, 0.6);
   border-radius: 0.92rem;
-  padding: 0.72rem;
+  padding: 0.86rem;
   background: rgba(255, 251, 245, 0.8);
   display: grid;
-  gap: 0.3rem;
+  gap: 0.36rem;
 }
 
 .fact-card-v2 svg {
@@ -983,13 +1006,13 @@ body {
 
 .stack-and-skills {
   display: grid;
-  gap: 0.65rem;
+  gap: 0.9rem;
 }
 
 .stack-card-v2 {
   border: 1px solid rgba(255, 255, 255, 0.6);
   border-radius: 0.95rem;
-  padding: 0.78rem;
+  padding: 0.95rem;
   background: rgba(255, 251, 245, 0.78);
 }
 
@@ -1018,13 +1041,13 @@ body {
 
 .writing-layout-v2 {
   display: grid;
-  gap: 0.75rem;
+  gap: 1rem;
 }
 
 .featured-writing-v2 {
   border: 1px solid rgba(255, 255, 255, 0.62);
   border-radius: 1rem;
-  padding: 1rem;
+  padding: 1.15rem;
   background: linear-gradient(150deg, rgba(255, 250, 242, 0.88), rgba(235, 246, 255, 0.65));
 }
 
@@ -1054,18 +1077,18 @@ body {
 
 .writing-list-v2 {
   display: grid;
-  gap: 0.55rem;
+  gap: 0.75rem;
 }
 
 .writing-card-v2 {
   border: 1px solid rgba(255, 255, 255, 0.62);
   border-radius: 0.92rem;
   background: rgba(255, 251, 245, 0.8);
-  padding: 0.78rem;
+  padding: 0.96rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 0.8rem;
+  gap: 0.95rem;
 }
 
 .writing-card-v2 h3 {
