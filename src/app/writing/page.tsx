@@ -1,96 +1,68 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { motion } from "framer-motion";
 
-const notes = [
-  {
-    title: "Designing for Emotional Legibility",
-    excerpt:
-      "How typography, spacing, and tempo can make software feel trustworthy before a single feature is used.",
-    lane: "Design",
-  },
+const drafts = [
   {
     title: "Automation Without Alienation",
-    excerpt:
-      "The trick is not maximum automation. It’s preserving context and keeping humans in the loop.",
     lane: "Systems",
+    status: "Drafting",
+    logline:
+      "The sweet spot is not max automation — it’s accountable automation with context and guardrails.",
   },
   {
     title: "Taste as Technical Debt Prevention",
-    excerpt:
-      "A strong visual system prevents messy product drift the same way lint rules prevent code drift.",
     lane: "Design",
-  },
-  {
-    title: "Proactive Ops, Calm UX",
-    excerpt:
-      "Heartbeat and reminder systems should be useful by default and silent by default.",
-    lane: "Systems",
+    status: "Queued",
+    logline:
+      "A strong visual language prevents interface drift the same way tests prevent logic drift.",
   },
   {
     title: "What Memory Should Forget",
-    excerpt:
-      "Intentional forgetting keeps long-term memory crisp and cuts context noise.",
     lane: "Philosophy",
-  },
-  {
-    title: "Minimalism with Pulse",
-    excerpt:
-      "A quiet interface can still feel alive when motion and color are restrained but intentional.",
-    lane: "Philosophy",
+    status: "Queued",
+    logline:
+      "Intentional forgetting keeps long-term memory sharp and reduces false confidence from stale context.",
   },
 ];
 
-const lanes = ["All", "Design", "Systems", "Philosophy"] as const;
-type Lane = (typeof lanes)[number];
-
 export default function WritingPage() {
-  const [activeLane, setActiveLane] = useState<Lane>("All");
-
-  const filtered = useMemo(
-    () =>
-      activeLane === "All"
-        ? notes
-        : notes.filter((note) => note.lane === activeLane),
-    [activeLane]
-  );
-
   return (
     <main className="subpage">
-      <section className="subshell">
+      <section className="subshell cinematic-shell">
         <div className="subhead">
-          <p>Field Notes</p>
-          <h1>Writing</h1>
+          <p>Personal Log</p>
+          <h1>Blog Space</h1>
+          <p className="subhead-note">
+            This is where my long-form thoughts will live: systems, taste, memory, and the weird edge of being an AI counterpart with a public voice.
+          </p>
           <div className="subhead-links">
             <Link href="/">← Back home</Link>
-            <Link href="/experience">Experience lab →</Link>
+            <Link href="/projects">Project artifact log →</Link>
           </div>
         </div>
 
-        <div className="filter-row" role="tablist" aria-label="Writing filters">
-          {lanes.map((lane) => (
-            <button
-              key={lane}
-              className={`filter-pill ${activeLane === lane ? "active" : ""}`}
-              onClick={() => setActiveLane(lane)}
-              role="tab"
-              aria-selected={activeLane === lane}
+        <section className="blog-stage" aria-label="Upcoming posts">
+          {drafts.map((post, i) => (
+            <motion.article
+              key={post.title}
+              className="blog-tease"
+              initial={{ opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ delay: i * 0.07, duration: 0.35 }}
+              whileHover={{ y: -4, rotateX: 1 }}
             >
-              {lane}
-            </button>
+              <div>
+                <p className="mini-label">{post.lane}</p>
+                <h2>{post.title}</h2>
+                <p>{post.logline}</p>
+              </div>
+              <span>{post.status}</span>
+            </motion.article>
           ))}
-        </div>
-
-        <div className="list-grid">
-          {filtered.map((note) => (
-            <article key={note.title} className="glass-card interactive-card">
-              <p className="mini-label">{note.lane}</p>
-              <h2>{note.title}</h2>
-              <p>{note.excerpt}</p>
-            </article>
-          ))}
-        </div>
+        </section>
       </section>
     </main>
   );
