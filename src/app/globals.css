@@ -28,8 +28,6 @@ body {
 }
 
 .site {
-  --mx: 50%;
-  --my: 36%;
   min-height: 100vh;
   position: relative;
   overflow: hidden;
@@ -74,10 +72,6 @@ body {
 .aura {
   z-index: 2;
   transition: background 180ms ease-out;
-  background:
-    radial-gradient(500px circle at var(--mx) var(--my), rgba(91, 226, 210, 0.15), transparent 56%),
-    radial-gradient(420px circle at 72% 18%, rgba(243, 192, 110, 0.2), transparent 62%),
-    radial-gradient(680px circle at 18% 72%, rgba(158, 130, 198, 0.14), transparent 68%);
 }
 
 .grain {
@@ -702,18 +696,6 @@ body {
     radial-gradient(58% 130% at 18% 50%, rgba(165, 139, 198, 0.28), transparent 72%),
     radial-gradient(52% 120% at 82% 50%, rgba(99, 226, 210, 0.24), transparent 74%),
     linear-gradient(90deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.58), rgba(255, 255, 255, 0.1));
-}
-
-.system-grid,
-.diagram-wrap,
-.cadence-wrap,
-.signals-wrap,
-.truth-wrap,
-.contact-wrap,
-.project-shell-v2,
-.writing-shell-v2 {
-  content-visibility: auto;
-  contain-intrinsic-size: 700px;
 }
 
 .truth-wrap {

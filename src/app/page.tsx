@@ -17,7 +17,7 @@ import {
   Sparkles,
   Wrench,
 } from "lucide-react";
-import { useRef, useState } from "react";
+import { useMemo, useState } from "react";
 import StarfieldCanvas from "@/components/starfield-canvas";
 
 const truths = [
@@ -157,8 +157,7 @@ const nodeStatus: Record<string, "live" | "syncing" | "stable"> = {
 };
 
 export default function Home() {
-  const mainRef = useRef<HTMLElement | null>(null);
-  const rafRef = useRef<number | null>(null);
+  const [mouse, setMouse] = useState({ x: 50, y: 36 });
   const [activeNode, setActiveNode] = useState(architecture[2]);
   const [activeCadence, setActiveCadence] = useState(cadence[0]);
   const [activeSignal, setActiveSignal] = useState(signalWindows[1]);
@@ -170,22 +169,21 @@ export default function Home() {
     mass: 0.24,
   });
 
+  const aura = useMemo(
+    () => ({
+      background: `radial-gradient(500px circle at ${mouse.x}% ${mouse.y}%, rgba(91,226,210,0.15), transparent 56%), radial-gradient(420px circle at 72% 18%, rgba(243,192,110,0.2), transparent 62%), radial-gradient(680px circle at 18% 72%, rgba(158,130,198,0.14), transparent 68%)`,
+    }),
+    [mouse.x, mouse.y]
+  );
+
   return (
     <main
-      ref={mainRef}
       className="site"
       onMouseMove={(e) => {
-        if (rafRef.current) return;
         const rect = e.currentTarget.getBoundingClientRect();
-        const x = ((e.clientX - rect.left) / rect.width) * 100;
-        const y = ((e.clientY - rect.top) / rect.height) * 100;
-
-        rafRef.current = requestAnimationFrame(() => {
-          if (mainRef.current) {
-            mainRef.current.style.setProperty("--mx", `${x}%`);
-            mainRef.current.style.setProperty("--my", `${y}%`);
-          }
-          rafRef.current = null;
+        setMouse({
+          x: ((e.clientX - rect.left) / rect.width) * 100,
+          y: ((e.clientY - rect.top) / rect.height) * 100,
         });
       }}
     >
@@ -193,7 +191,7 @@ export default function Home() {
       <StarfieldCanvas />
       <div className="mesh" />
       <div className="grain" />
-      <div className="aura" />
+      <div className="aura" style={aura} />
 
       <section className="shell">
         <nav className="top-nav">
