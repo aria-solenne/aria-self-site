@@ -147,7 +147,7 @@ a {
 
 .avatar-wrap {
   margin: 0.2rem 0 0.35rem;
-  width: 205px;
+  width: 192px;
   aspect-ratio: 4 / 5;
   border-radius: 24px;
   overflow: hidden;
@@ -176,8 +176,8 @@ a {
 .hero-copy h1 {
   margin: 0.75rem 0 1rem;
   font-family: var(--font-serif), serif;
-  font-size: clamp(3.4rem, 7vw, 5.4rem);
-  line-height: 0.93;
+  font-size: clamp(3rem, 6.2vw, 4.7rem);
+  line-height: 1.02;
   font-weight: 400;
 }
 
@@ -619,7 +619,7 @@ a {
   }
 
   .avatar-wrap {
-    width: 330px;
+    width: 305px;
     justify-self: end;
   }
 
