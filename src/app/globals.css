@@ -74,7 +74,7 @@ a {
 }
 
 .shell {
-  width: min(820px, 100%);
+  width: min(980px, 100%);
   margin: 0 auto;
   padding: clamp(1.6rem, 3.8vw, 2.6rem) clamp(1rem, 3.4vw, 2.6rem) 6.2rem;
   position: relative;
@@ -103,7 +103,7 @@ a {
 .nav-links {
   display: flex;
   gap: 1.1rem;
-  font-family: var(--font-ui), system-ui, sans-serif;
+  font-family: var(--font-serif), serif;
   font-size: 0.9rem;
 }
 
@@ -138,9 +138,39 @@ a {
 
 /* hero */
 .hero {
+  position: relative;
   display: grid;
   gap: clamp(1.8rem, 4vw, 3rem);
   align-items: start;
+  padding: clamp(1.2rem, 3vw, 1.8rem) 0;
+}
+
+.hero-banner {
+  position: absolute;
+  left: 50%;
+  top: -0.6rem;
+  transform: translateX(-50%);
+  width: min(1060px, 100%);
+  height: clamp(180px, 26vw, 320px);
+  border-radius: 22px;
+  overflow: hidden;
+  z-index: -1;
+  opacity: 0.92;
+  filter: saturate(1.08) contrast(1.02);
+}
+
+.hero-banner-img {
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.02);
+}
+
+.hero-banner-mask {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(60% 80% at 48% 40%, rgba(12, 12, 16, 0.22), rgba(12, 12, 16, 0.86) 72%),
+    linear-gradient(180deg, rgba(12, 12, 16, 0.12), rgba(12, 12, 16, 0.9));
 }
 
 .kicker {
@@ -149,7 +179,7 @@ a {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   font-size: 0.72rem;
-  font-family: var(--font-ui), system-ui, sans-serif;
+  font-family: var(--font-serif), serif;
 }
 
 .hero-copy h1 {
@@ -191,7 +221,7 @@ a {
   gap: 0.55rem;
   color: rgba(255, 255, 255, 0.88);
   transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
-  font-family: var(--font-ui), system-ui, sans-serif;
+  font-family: var(--font-serif), serif;
 }
 
 .cta:hover {
@@ -213,7 +243,7 @@ a {
   flex-wrap: wrap;
   gap: 1rem;
   color: rgba(255, 255, 255, 0.74);
-  font-family: var(--font-ui), system-ui, sans-serif;
+  font-family: var(--font-serif), serif;
 }
 
 .mini-stats span {
@@ -243,7 +273,7 @@ a {
   border-top: 1px solid rgba(255, 255, 255, 0.06);
   color: rgba(255, 255, 255, 0.64);
   font-size: 0.92rem;
-  font-family: var(--font-ui), system-ui, sans-serif;
+  font-family: var(--font-serif), serif;
 }
 
 /* sections */
@@ -278,7 +308,7 @@ a {
   gap: 0.55rem;
   align-items: center;
   font-size: 0.72rem;
-  font-family: var(--font-ui), system-ui, sans-serif;
+  font-family: var(--font-serif), serif;
 }
 
 .card p {
@@ -351,7 +381,7 @@ a {
   margin-top: 0.25rem;
   color: rgba(255, 255, 255, 0.64);
   font-size: 0.98rem;
-  font-family: var(--font-ui), system-ui, sans-serif;
+  font-family: var(--font-serif), serif;
 }
 
 .link-card:hover {
@@ -391,7 +421,7 @@ a {
   border-radius: 14px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   background: rgba(255, 255, 255, 0.02);
-  font-family: var(--font-ui), system-ui, sans-serif;
+  font-family: var(--font-serif), serif;
   transition: transform 120ms ease, background 120ms ease;
 }
 
@@ -406,7 +436,7 @@ a {
   display: grid;
   gap: 0.75rem;
   color: rgba(255, 255, 255, 0.6);
-  font-family: var(--font-ui), system-ui, sans-serif;
+  font-family: var(--font-serif), serif;
 }
 
 .footer-links {
@@ -429,7 +459,7 @@ a {
 }
 
 .subshell {
-  width: min(820px, 100%);
+  width: min(980px, 100%);
   margin: 0 auto;
   padding: clamp(1.6rem, 3.8vw, 2.6rem) clamp(1rem, 3.4vw, 2.6rem) 6.2rem;
   display: grid;
@@ -456,7 +486,7 @@ a {
   display: flex;
   flex-wrap: wrap;
   gap: 0.8rem;
-  font-family: var(--font-ui), system-ui, sans-serif;
+  font-family: var(--font-serif), serif;
 }
 
 .subhead-links a {
@@ -503,7 +533,7 @@ a {
   gap: 0.45rem;
   text-decoration: none;
   border-bottom: 1px solid rgba(240, 196, 111, 0.35);
-  font-family: var(--font-ui), system-ui, sans-serif;
+  font-family: var(--font-serif), serif;
   color: rgba(255, 255, 255, 0.84);
 }
 
@@ -535,12 +565,12 @@ a {
   align-items: center;
   gap: 0.4rem;
   color: rgba(255, 255, 255, 0.85);
-  font-family: var(--font-ui), system-ui, sans-serif;
+  font-family: var(--font-serif), serif;
 }
 
 .muted {
   color: rgba(255, 255, 255, 0.6);
-  font-family: var(--font-ui), system-ui, sans-serif;
+  font-family: var(--font-serif), serif;
 }
 
 .facts {
@@ -559,7 +589,7 @@ a {
   column-gap: 0.6rem;
   row-gap: 0.1rem;
   align-items: center;
-  font-family: var(--font-ui), system-ui, sans-serif;
+  font-family: var(--font-serif), serif;
 }
 
 .fact strong {
@@ -576,7 +606,7 @@ a {
   display: flex;
   flex-wrap: wrap;
   gap: 0.65rem;
-  font-family: var(--font-ui), system-ui, sans-serif;
+  font-family: var(--font-serif), serif;
 }
 
 .stack span {
@@ -591,11 +621,6 @@ a {
 }
 
 @media (min-width: 900px) {
-  .hero {
-    grid-template-columns: 1.35fr 0.65fr;
-    align-items: center;
-  }
-
   .proof-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1.6rem;

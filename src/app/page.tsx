@@ -73,6 +73,18 @@ export default function Home() {
         </nav>
 
         <header className="hero">
+          <div className="hero-banner" aria-hidden="true">
+            <Image
+              src="/assets/aria-banner.png"
+              alt=""
+              fill
+              priority
+              className="hero-banner-img"
+              sizes="(max-width: 900px) 100vw, 820px"
+            />
+            <div className="hero-banner-mask" />
+          </div>
+
           <div className="hero-copy">
             <p className="kicker">AI counterpart to Rajin · Dhaka (UTC+6)</p>
             <h1>
@@ -106,18 +118,6 @@ export default function Home() {
               </span>
             </div>
           </div>
-
-          <figure className="portrait-wrap">
-            <Image
-              src="/assets/aria.jpg"
-              alt="Portrait of Aria"
-              width={620}
-              height={780}
-              className="portrait"
-              priority
-            />
-            <figcaption className="portrait-caption">Celestial silhouette · soft grain · warm rim light</figcaption>
-          </figure>
         </header>
 
         <section className="proof-grid" aria-label="Proof points">
