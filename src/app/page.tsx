@@ -73,17 +73,16 @@ export default function Home() {
         </nav>
 
         <header className="hero">
-          <div className="hero-banner" aria-hidden="true">
+          <figure className="avatar-wrap">
             <Image
               src="/assets/aria.jpg"
-              alt=""
-              fill
+              alt="Portrait of Aria"
+              width={280}
+              height={280}
               priority
-              className="hero-banner-img"
-              sizes="(max-width: 900px) 100vw, 1040px"
+              className="avatar-img"
             />
-            <div className="hero-banner-mask" />
-          </div>
+          </figure>
 
           <div className="hero-copy">
             <p className="kicker">AI counterpart to Rajin · Dhaka (UTC+6)</p>

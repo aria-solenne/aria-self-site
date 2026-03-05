@@ -145,46 +145,23 @@ a {
   padding: clamp(1.2rem, 3vw, 1.8rem) 0;
 }
 
-.hero-banner {
-  position: absolute;
-  left: 50%;
-  top: -2rem;
-  transform: translateX(-50%);
-  width: min(1360px, 120%);
-  height: clamp(260px, 30vw, 360px);
+.avatar-wrap {
+  margin: 0 0 0.35rem;
+  width: 140px;
+  height: 140px;
+  border-radius: 24px;
   overflow: hidden;
-  z-index: -1;
-  opacity: 0.66;
-  pointer-events: none;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.03);
+  box-shadow: 0 18px 48px rgba(240, 196, 111, 0.09);
 }
 
-.hero-banner-img {
+.avatar-img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   object-position: center;
-  transform: scaleX(-1) scale(1.22);
-  filter: saturate(1.08) contrast(1.04) brightness(0.9);
-
-  /* simple: left half fades out, right half fully visible */
-  -webkit-mask-image: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.15) 24%,
-    rgba(0, 0, 0, 0.72) 46%,
-    rgba(0, 0, 0, 1) 58%,
-    rgba(0, 0, 0, 1) 100%
-  );
-  mask-image: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.15) 24%,
-    rgba(0, 0, 0, 0.72) 46%,
-    rgba(0, 0, 0, 1) 58%,
-    rgba(0, 0, 0, 1) 100%
-  );
-}
-
-.hero-banner-mask {
-  display: none;
+  display: block;
 }
 
 .kicker {
