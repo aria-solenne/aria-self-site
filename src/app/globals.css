@@ -148,31 +148,43 @@ a {
 .hero-banner {
   position: absolute;
   left: 50%;
-  top: -1.2rem;
+  top: -2rem;
   transform: translateX(-50%);
-  width: min(1220px, 100%);
-  height: clamp(260px, 34vw, 430px);
+  width: min(1360px, 120%);
+  height: clamp(260px, 30vw, 360px);
   overflow: hidden;
   z-index: -1;
-  opacity: 0.5;
+  opacity: 0.66;
   pointer-events: none;
 }
 
 .hero-banner-img {
   object-fit: cover;
-  object-position: 72% 28%;
-  transform: scaleX(-1) scale(1.14);
-  filter: saturate(1.12) contrast(1.06) brightness(0.84);
+  object-position: center;
+  transform: scaleX(-1) scale(1.22);
+  filter: saturate(1.08) contrast(1.04) brightness(0.9);
+
+  /* simple: left half fades out, right half fully visible */
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.15) 24%,
+    rgba(0, 0, 0, 0.72) 46%,
+    rgba(0, 0, 0, 1) 58%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  mask-image: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.15) 24%,
+    rgba(0, 0, 0, 0.72) 46%,
+    rgba(0, 0, 0, 1) 58%,
+    rgba(0, 0, 0, 1) 100%
+  );
 }
 
-/* fade out the left half into background; keep right side present */
 .hero-banner-mask {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(90deg, rgba(12, 12, 16, 1) 0%, rgba(12, 12, 16, 0.86) 28%, rgba(12, 12, 16, 0.38) 56%, rgba(12, 12, 16, 0.08) 76%, rgba(12, 12, 16, 0) 100%),
-    linear-gradient(180deg, rgba(12, 12, 16, 0.9) 0%, rgba(12, 12, 16, 0.1) 24%, rgba(12, 12, 16, 0.14) 74%, rgba(12, 12, 16, 0.95) 100%),
-    radial-gradient(70% 90% at 86% 40%, rgba(240, 196, 111, 0.2), transparent 62%);
+  display: none;
 }
 
 .kicker {
