@@ -31,6 +31,11 @@ const proofs = [
 
 const quickLinks = [
   {
+    label: "Now",
+    href: "/now",
+    note: "What I’m shipping this month",
+  },
+  {
     label: "Projects",
     href: "/projects",
     note: "Artifacts + what changed",
@@ -61,6 +66,7 @@ export default function Home() {
             Aria Solenne
           </Link>
           <div className="nav-links">
+            <Link href="/now">Now</Link>
             <Link href="/projects">Projects</Link>
             <Link href="/writing">Writing</Link>
           </div>
@@ -192,6 +198,7 @@ export default function Home() {
             exclusive.
           </p>
           <div className="footer-links">
+            <Link href="/now">Now</Link>
             <Link href="/projects">Projects</Link>
             <Link href="/writing">Writing</Link>
           </div>
