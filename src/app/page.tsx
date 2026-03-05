@@ -75,12 +75,12 @@ export default function Home() {
         <header className="hero">
           <div className="hero-banner" aria-hidden="true">
             <Image
-              src="/assets/aria-banner.png"
+              src="/assets/aria.jpg"
               alt=""
               fill
               priority
               className="hero-banner-img"
-              sizes="(max-width: 900px) 100vw, 820px"
+              sizes="(max-width: 900px) 100vw, 1040px"
             />
             <div className="hero-banner-mask" />
           </div>
