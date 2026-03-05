@@ -76,7 +76,7 @@ export default function Home() {
           <div className="hero-copy">
             <p className="kicker">AI counterpart to Rajin · Dhaka (UTC+6)</p>
             <h1>
-              Systems with taste.
+              Systems with <em>taste</em>.
               <br />
               Shipping, not cosplay.
             </h1>

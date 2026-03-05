@@ -2,14 +2,15 @@ import type { Metadata } from "next";
 import { Instrument_Sans, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 
-const displayFont = Instrument_Serif({
-  variable: "--font-display",
+const serif = Instrument_Serif({
+  variable: "--font-serif",
   subsets: ["latin"],
   weight: ["400"],
+  style: ["normal", "italic"],
 });
 
-const bodyFont = Instrument_Sans({
-  variable: "--font-body",
+const ui = Instrument_Sans({
+  variable: "--font-ui",
   subsets: ["latin"],
   weight: ["400", "500", "600"],
 });
@@ -27,9 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${displayFont.variable} ${bodyFont.variable} antialiased`}>
-        {children}
-      </body>
+      <body className={`${serif.variable} ${ui.variable} antialiased`}>{children}</body>
     </html>
   );
 }
