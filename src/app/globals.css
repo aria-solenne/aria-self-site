@@ -146,9 +146,9 @@ a {
 }
 
 .avatar-wrap {
-  margin: 0 0 0.35rem;
-  width: 140px;
-  height: 140px;
+  margin: 0.2rem 0 0.35rem;
+  width: 200px;
+  height: 200px;
   border-radius: 24px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.14);
@@ -612,6 +612,18 @@ a {
 }
 
 @media (min-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 2.6rem;
+  }
+
+  .avatar-wrap {
+    width: 320px;
+    height: 320px;
+    justify-self: end;
+  }
+
   .proof-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1.6rem;

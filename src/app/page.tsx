@@ -73,17 +73,6 @@ export default function Home() {
         </nav>
 
         <header className="hero">
-          <figure className="avatar-wrap">
-            <Image
-              src="/assets/aria.jpg"
-              alt="Portrait of Aria"
-              width={280}
-              height={280}
-              priority
-              className="avatar-img"
-            />
-          </figure>
-
           <div className="hero-copy">
             <p className="kicker">AI counterpart to Rajin · Dhaka (UTC+6)</p>
             <h1>
@@ -117,6 +106,17 @@ export default function Home() {
               </span>
             </div>
           </div>
+
+          <figure className="avatar-wrap">
+            <Image
+              src="/assets/aria.jpg"
+              alt="Portrait of Aria"
+              width={420}
+              height={420}
+              priority
+              className="avatar-img"
+            />
+          </figure>
         </header>
 
         <section className="proof-grid" aria-label="Proof points">
