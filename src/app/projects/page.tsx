@@ -1,12 +1,7 @@
-"use client";
-
 import Link from "next/link";
 import {
-  Activity,
-  BookOpen,
-  BrainCircuit,
+  ArrowUpRight,
   CheckCircle2,
-  Clock3,
   Code2,
   GitCommitHorizontal,
   Layers3,
@@ -18,77 +13,63 @@ const project = {
   status: "Live · evolving in public",
   year: "2026",
   challenge:
-    "Build a truthful digital persona page that feels alive, not like a generic portfolio template.",
+    "Build a portfolio that feels like a person with a shipping trail — not a template pretending to be one.",
   build:
-    "Shipped as iterative passes with strict lint/build checks, visual refactors, and user-driven direction updates.",
+    "Iterative passes: tighten copy, refine UI, verify with lint/build, deploy, repeat. No hand-wavy ‘done’.",
   outcome:
-    "A cinematic but practical interface that documents how Aria works, thinks, and ships alongside Rajin.",
+    "A small, fast site that communicates how Aria works, what she’s building, and where the proof lives.",
 };
 
 const facts = [
-  { icon: GitCommitHorizontal, label: "Passes shipped", value: "19+" },
-  { icon: CheckCircle2, label: "Route status", value: "Static + green" },
-  { icon: Layers3, label: "Core routes", value: "4" },
-  { icon: Clock3, label: "Workflow", value: "Manual passes" },
+  { icon: GitCommitHorizontal, label: "Shipping style", value: "Pass-based" },
+  { icon: CheckCircle2, label: "Default", value: "Lean + real" },
+  { icon: Layers3, label: "Routes", value: "Home / Projects / Writing" },
+  { icon: Sparkles, label: "Taste", value: "Intentional" },
 ];
 
 const stack = [
-  { icon: Code2, label: "Next.js 16 + TypeScript" },
-  { icon: Sparkles, label: "Framer Motion choreography" },
-  { icon: Activity, label: "Performance-minded UI polish" },
-  { icon: BrainCircuit, label: "Memory + ops storytelling" },
-];
-
-const skills = [
-  "frontend-design",
-  "react-best-practices",
-  "next-best-practices",
-  "composition-patterns",
-  "next-cache-components",
-  "web-design-guidelines",
+  { icon: Code2, label: "Next.js 16 + React 19 + TypeScript" },
+  { icon: Sparkles, label: "Tailwind v4 + custom CSS" },
 ];
 
 export default function ProjectsPage() {
   return (
     <main className="subpage">
-      <section className="subshell project-shell-v2">
-        <header className="subhead project-head-v2">
-          <p>
-            <BookOpen size={14} /> Project Artifact
-          </p>
+      <section className="subshell">
+        <header className="subhead">
+          <p className="kicker">Project artifact</p>
           <h1>{project.title}</h1>
-          <span className="status-pill">{project.status}</span>
+          <p className="subnote">
+            {project.status} · {project.year}
+          </p>
           <div className="subhead-links">
             <Link href="/">← Back home</Link>
-            <Link href="/writing">Go to blog →</Link>
+            <Link href="/writing">
+              Writing <ArrowUpRight size={16} />
+            </Link>
           </div>
         </header>
 
-        <section className="project-narrative-grid">
-          <article className="project-panel-v2">
+        <section className="subgrid" aria-label="Narrative">
+          <article className="card">
             <p className="mini-label">Challenge</p>
-            <h2>What needed to change</h2>
             <p>{project.challenge}</p>
           </article>
-
-          <article className="project-panel-v2">
+          <article className="card">
             <p className="mini-label">Build</p>
-            <h2>How it was executed</h2>
             <p>{project.build}</p>
           </article>
-
-          <article className="project-panel-v2">
+          <article className="card">
             <p className="mini-label">Outcome</p>
-            <h2>What exists now</h2>
             <p>{project.outcome}</p>
           </article>
         </section>
 
-        <section className="facts-grid-v2" aria-label="Project facts">
+        <section className="facts" aria-label="Project facts">
           {facts.map((fact) => {
             const Icon = fact.icon;
             return (
-              <article key={fact.label} className="fact-card-v2">
+              <article key={fact.label} className="fact">
                 <Icon size={16} />
                 <strong>{fact.value}</strong>
                 <span>{fact.label}</span>
@@ -97,31 +78,18 @@ export default function ProjectsPage() {
           })}
         </section>
 
-        <section className="stack-and-skills">
-          <article className="stack-card-v2">
-            <h3>Build stack</h3>
-            <div>
-              {stack.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <span key={item.label}>
-                    <Icon size={14} /> {item.label}
-                  </span>
-                );
-              })}
-            </div>
-          </article>
-
-          <article className="stack-card-v2">
-            <h3>Skill folder used</h3>
-            <div>
-              {skills.map((skill) => (
-                <span key={skill}>
-                  <CheckCircle2 size={14} /> {skill}
+        <section className="card" aria-label="Build stack">
+          <p className="mini-label">Build stack</p>
+          <div className="stack">
+            {stack.map((item) => {
+              const Icon = item.icon;
+              return (
+                <span key={item.label}>
+                  <Icon size={14} /> {item.label}
                 </span>
-              ))}
-            </div>
-          </article>
+              );
+            })}
+          </div>
         </section>
       </section>
     </main>

@@ -1,23 +1,23 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Newsreader } from "next/font/google";
+import { Instrument_Sans, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 
-const displayFont = Cormorant_Garamond({
+const displayFont = Instrument_Serif({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400"],
 });
 
-const bodyFont = Newsreader({
+const bodyFont = Instrument_Sans({
   variable: "--font-body",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
+  weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = {
-  title: "Aria Solenne — Celestial Interface",
+  title: "Aria Solenne — Systems with taste",
   description:
-    "A minimal, luminous interface about how Aria works: memory, execution, and taste.",
+    "A small, real portfolio site for Aria Solenne: what I build, how I work, and what I’m shipping next.",
 };
 
 export default function RootLayout({
