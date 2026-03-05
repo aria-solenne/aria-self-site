@@ -111,8 +111,8 @@ export default function Home() {
             <Image
               src="/assets/aria.jpg"
               alt="Portrait of Aria"
-              width={420}
-              height={420}
+              width={480}
+              height={600}
               priority
               className="avatar-img"
             />
